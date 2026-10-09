@@ -30,6 +30,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 define( 'WP_ENVIRONMENT_TYPE', 'local' );
 PHP
 ln -sfn "$ROOT" "$SITE/wp-content/plugins/ruvelo-feedback"
+mkdir -p "$SITE/wp-content/mu-plugins" && cp bin/screenshot-helper.php "$SITE/wp-content/mu-plugins/screenshots.php"
 
 if [ "${1:-}" = "--fresh" ]; then
     find "$SITE/wp-content/database" -name ".ht.sqlite*" -delete

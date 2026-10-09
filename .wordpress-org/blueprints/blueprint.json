@@ -1,0 +1,55 @@
+{
+    "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+    "meta": {
+        "title": "Ruvelo Feedback: Halyard's feedback portal",
+        "description": "A feedback board, roadmap and changelog, with Halyard's demo requests, votes, comments and changelog entries.",
+        "author": "Ruvelo",
+        "categories": ["Content"]
+    },
+    "landingPage": "/feedback/",
+    "preferredVersions": {
+        "php": "8.3",
+        "wp": "7.1"
+    },
+    "features": {
+        "networking": false
+    },
+    "login": true,
+    "steps": [
+        {
+            "step": "setSiteOptions",
+            "options": {
+                "blogname": "Halyard",
+                "permalink_structure": "/%postname%/"
+            }
+        },
+        {
+            "step": "installTheme",
+            "themeData": {
+                "resource": "wordpress.org/themes",
+                "slug": "twentytwentyfive"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "installPlugin",
+            "pluginData": {
+                "resource": "url",
+                "url": "https://github.com/Ruvelo/wp-feedback/releases/latest/download/ruvelo-feedback.zip"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "wp-cli",
+            "command": "wp ruvelo-feedback demo --yes"
+        },
+        {
+            "step": "wp-cli",
+            "command": "wp rewrite flush"
+        }
+    ]
+}
