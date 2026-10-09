@@ -35,7 +35,10 @@ final class Stats
             ],
         ]);
 
-        $top = Requests::board(['status' => 'open', 'per_page' => 10, 'sort' => 'top']);
+        // Most voted, without the board's pinned-first order.
+        $top = Requests::board(['status' => 'open', 'per_page' => 50, 'sort' => 'top']);
+        usort($top['posts'], static fn (WP_Post $a, WP_Post $b): int => Requests::votes($b->ID) <=> Requests::votes($a->ID));
+        $top['posts'] = array_slice($top['posts'], 0, 10);
 
         return [
             'open' => $open,

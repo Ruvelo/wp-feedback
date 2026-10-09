@@ -82,3 +82,4 @@
 .ruvelo-fb-stats-cols td.num, .ruvelo-fb-stats-cols th.num { text-align: right; font-variant-numeric: tabular-nums; }
 #ruvelo-feedback-request select, #ruvelo-feedback-request textarea { width: 100%; max-width: 100%; box-sizing: border-box; }
 #ruvelo-feedback-request label strong { font-weight: 600; }
+.ruvelo-fb-admin .form-table td fieldset label.ruvelo-fb-choice { display: block; }
