@@ -33,17 +33,19 @@ final class Votes
         // One statement that only inserts when the voter hasn't voted: no
         // duplicate-key error in the normal case, and the unique index still
         // has the last word if two requests race.
-        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table; caches are cleared by recount().
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table; caches are cleared by recount().
         $inserted = $wpdb->query($wpdb->prepare(
-            "INSERT INTO {$table} (request_id, voter, user_id, email, confirmed, notify, created_at)
+            'INSERT INTO %i (request_id, voter, user_id, email, confirmed, notify, created_at)
              SELECT %d, %s, %d, %s, %d, 1, %s FROM DUAL
-             WHERE NOT EXISTS (SELECT 1 FROM {$table} WHERE request_id = %d AND voter = %s)",
+             WHERE NOT EXISTS (SELECT 1 FROM %i WHERE request_id = %d AND voter = %s)',
+            $table,
             $requestId,
             $voter,
             $userId,
             $email,
             $confirmed ? 1 : 0,
             current_time('mysql', true),
+            $table,
             $requestId,
             $voter
         ));
@@ -69,8 +71,8 @@ final class Votes
         global $wpdb;
 
         $table = Install::votesTable();
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table, name from $wpdb->prefix.
-        $row = $wpdb->get_row($wpdb->prepare("SELECT id, confirmed, email, user_id FROM {$table} WHERE request_id = %d AND voter = %s", $requestId, $voter), ARRAY_A);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table, name from $wpdb->prefix.
+        $row = $wpdb->get_row($wpdb->prepare('SELECT id, confirmed, email, user_id FROM %i WHERE request_id = %d AND voter = %s', $table, $requestId, $voter), ARRAY_A);
 
         return is_array($row) ? ['id' => (int) $row['id'], 'confirmed' => (bool) $row['confirmed'], 'email' => (string) $row['email'], 'user_id' => (int) $row['user_id']] : null;
     }
@@ -99,8 +101,8 @@ final class Votes
         global $wpdb;
 
         $table = Install::votesTable();
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table; the result is stored in post meta.
-        $count = (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$table} WHERE request_id = %d AND confirmed = 1", $requestId));
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table; the result is stored in post meta.
+        $count = (int) $wpdb->get_var($wpdb->prepare('SELECT COUNT(*) FROM %i WHERE request_id = %d AND confirmed = 1', $table, $requestId));
         update_post_meta($requestId, '_ruvelo_votes', $count);
 
         return $count;
@@ -123,7 +125,7 @@ final class Votes
         $table = Install::votesTable();
         $placeholders = implode(',', array_fill(0, count($requestIds), '%d'));
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber -- Custom table; placeholders built above.
-        $ids = $wpdb->get_col($wpdb->prepare("SELECT request_id FROM {$table} WHERE voter = %s AND confirmed = 1 AND request_id IN ({$placeholders})", $voter, ...$requestIds));
+        $ids = $wpdb->get_col($wpdb->prepare("SELECT request_id FROM %i WHERE voter = %s AND confirmed = 1 AND request_id IN ({$placeholders})", $table, $voter, ...$requestIds));
 
         $voted = [];
         foreach ($ids as $id) {
@@ -143,8 +145,8 @@ final class Votes
         global $wpdb;
 
         $table = Install::votesTable();
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table.
-        $rows = $wpdb->get_results($wpdb->prepare("SELECT user_id, email FROM {$table} WHERE request_id = %d AND confirmed = 1 ORDER BY id DESC LIMIT %d", $requestId, $limit), ARRAY_A);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table.
+        $rows = $wpdb->get_results($wpdb->prepare('SELECT user_id, email FROM %i WHERE request_id = %d AND confirmed = 1 ORDER BY id DESC LIMIT %d', $table, $requestId, $limit), ARRAY_A);
 
         return array_values(array_map(static fn (array $row): array => ['user_id' => (int) $row['user_id'], 'email' => (string) $row['email']], is_array($rows) ? $rows : []));
     }
@@ -160,13 +162,16 @@ final class Votes
         global $wpdb;
 
         $table = Install::votesTable();
-        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table; counts are recounted afterwards.
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table; counts are recounted afterwards.
         $moved = (int) $wpdb->query($wpdb->prepare(
-            "INSERT INTO {$table} (request_id, voter, user_id, email, confirmed, notify, created_at)
-             SELECT %d, d.voter, d.user_id, d.email, d.confirmed, d.notify, d.created_at FROM {$table} d
-             WHERE d.request_id = %d AND NOT EXISTS (SELECT 1 FROM {$table} x WHERE x.request_id = %d AND x.voter = d.voter)",
+            'INSERT INTO %i (request_id, voter, user_id, email, confirmed, notify, created_at)
+             SELECT %d, d.voter, d.user_id, d.email, d.confirmed, d.notify, d.created_at FROM %i d
+             WHERE d.request_id = %d AND NOT EXISTS (SELECT 1 FROM %i x WHERE x.request_id = %d AND x.voter = d.voter)',
+            $table,
             $into,
+            $table,
             $from,
+            $table,
             $into
         ));
         $wpdb->delete($table, ['request_id' => $from], ['%d']);
@@ -205,8 +210,8 @@ final class Votes
 
         $start = strtotime('monday this week', time()) - ($weeks - 1) * WEEK_IN_SECONDS;
         $table = Install::votesTable();
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table, admin stats only.
-        $dates = $wpdb->get_col($wpdb->prepare("SELECT created_at FROM {$table} WHERE confirmed = 1 AND created_at >= %s", gmdate('Y-m-d H:i:s', $start)));
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table, admin stats only.
+        $dates = $wpdb->get_col($wpdb->prepare('SELECT created_at FROM %i WHERE confirmed = 1 AND created_at >= %s', $table, gmdate('Y-m-d H:i:s', $start)));
 
         $buckets = [];
         for ($i = 0; $i < $weeks; $i++) {
@@ -227,7 +232,7 @@ final class Votes
 
         $table = Install::votesTable();
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table, admin stats only.
-        return (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$table} WHERE confirmed = 1 AND created_at >= %s", gmdate('Y-m-d H:i:s', $timestamp)));
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table, admin stats only.
+        return (int) $wpdb->get_var($wpdb->prepare('SELECT COUNT(*) FROM %i WHERE confirmed = 1 AND created_at >= %s', $table, gmdate('Y-m-d H:i:s', $timestamp)));
     }
 }

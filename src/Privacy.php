@@ -104,8 +104,8 @@ final class Privacy
 
         $user = get_user_by('email', $email);
         $table = Install::votesTable();
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table.
-        $rows = $wpdb->get_results($wpdb->prepare("SELECT id, request_id, created_at FROM {$table} WHERE voter = %s OR voter = %s", Votes::emailKey($email), $user !== false ? Votes::userKey($user->ID) : ''), ARRAY_A);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table.
+        $rows = $wpdb->get_results($wpdb->prepare('SELECT id, request_id, created_at FROM %i WHERE voter = %s OR voter = %s', $table, Votes::emailKey($email), $user !== false ? Votes::userKey($user->ID) : ''), ARRAY_A);
 
         return is_array($rows) ? array_values($rows) : [];
     }
@@ -120,8 +120,8 @@ final class Privacy
             'post_status' => 'any',
             'fields' => 'ids',
             'posts_per_page' => 100,
-            'meta_key' => '_ruvelo_guest_email', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_meta_key -- Privacy requests are rare.
-            'meta_value' => $email, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_meta_value
+            'meta_key' => '_ruvelo_guest_email', // phpcs:ignore WordPress.DB.SlowDBQuery -- Privacy requests are rare.
+            'meta_value' => $email, // phpcs:ignore WordPress.DB.SlowDBQuery -- Privacy requests are rare.
         ]);
 
         return array_values(array_map('intval', $ids));

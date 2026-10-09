@@ -66,8 +66,8 @@ final class Notifications
 
         $table = Install::outboxTable();
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table.
-        return (int) $wpdb->get_var("SELECT COUNT(*) FROM {$table} WHERE done_at IS NULL");
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table.
+        return (int) $wpdb->get_var($wpdb->prepare('SELECT COUNT(*) FROM %i WHERE done_at IS NULL', $table));
     }
 
     /**
@@ -93,8 +93,8 @@ final class Notifications
         $handled = 0;
 
         while ($handled < $batch) {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table.
-            $row = $wpdb->get_row("SELECT * FROM {$table} WHERE done_at IS NULL ORDER BY id ASC LIMIT 1", ARRAY_A);
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table.
+            $row = $wpdb->get_row($wpdb->prepare('SELECT * FROM %i WHERE done_at IS NULL ORDER BY id ASC LIMIT 1', $table), ARRAY_A);
             if (! is_array($row)) {
                 break;
             }
@@ -149,8 +149,8 @@ final class Notifications
 
         $cursor = (int) $row['last_vote_id'];
         $limit = max(1, $budget - $handled);
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table.
-        $voters = $wpdb->get_results($wpdb->prepare("SELECT id, user_id, email FROM {$votes} WHERE request_id = %d AND confirmed = 1 AND notify = 1 AND id > %d ORDER BY id ASC LIMIT %d", $requestId, $cursor, $limit), ARRAY_A);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table.
+        $voters = $wpdb->get_results($wpdb->prepare('SELECT id, user_id, email FROM %i WHERE request_id = %d AND confirmed = 1 AND notify = 1 AND id > %d ORDER BY id ASC LIMIT %d', $votes, $requestId, $cursor, $limit), ARRAY_A);
         $voters = is_array($voters) ? $voters : [];
 
         foreach ($voters as $voter) {

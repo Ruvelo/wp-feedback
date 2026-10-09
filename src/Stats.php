@@ -29,7 +29,7 @@ final class Stats
             'post_status' => 'publish',
             'posts_per_page' => 1,
             'fields' => 'ids',
-            'meta_query' => [
+            'meta_query' => [ // phpcs:ignore WordPress.DB.SlowDBQuery -- Admin stats only.
                 ['key' => '_ruvelo_status', 'value' => 'shipped'],
                 ['key' => '_ruvelo_status_changed', 'value' => time() - 90 * DAY_IN_SECONDS, 'compare' => '>=', 'type' => 'NUMERIC'],
             ],

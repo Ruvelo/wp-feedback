@@ -343,10 +343,10 @@ final class Admin
             'post_type' => PostTypes::REQUEST,
             'post_status' => 'publish',
             'posts_per_page' => 200,
-            'exclude' => [$post->ID],
             'orderby' => 'title',
             'order' => 'ASC',
         ]);
+        $targets = array_values(array_filter($targets, static fn (WP_Post $target): bool => $target->ID !== $post->ID));
         $guest = (int) $post->post_author === 0 ? Requests::authorEmail($post) : '';
         ?>
         <div class="ruvelo-fb-box">
@@ -459,7 +459,7 @@ final class Admin
             'post_type' => PostTypes::REQUEST,
             'post_status' => 'publish',
             'posts_per_page' => 300,
-            'meta_key' => '_ruvelo_votes',
+            'meta_key' => '_ruvelo_votes', // phpcs:ignore WordPress.DB.SlowDBQuery -- Sorting by votes, admin only.
             'orderby' => 'meta_value_num',
             'order' => 'DESC',
         ]);

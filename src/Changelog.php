@@ -133,7 +133,7 @@ final class Changelog
             'order' => 'DESC',
         ];
         if ($label !== '') {
-            $args['tax_query'] = [['taxonomy' => PostTypes::LABEL, 'field' => 'slug', 'terms' => sanitize_title($label)]];
+            $args['tax_query'] = [['taxonomy' => PostTypes::LABEL, 'field' => 'slug', 'terms' => sanitize_title($label)]]; // phpcs:ignore WordPress.DB.SlowDBQuery -- One label.
         }
         $query = new WP_Query($args);
 

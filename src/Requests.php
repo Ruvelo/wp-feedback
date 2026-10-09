@@ -425,7 +425,7 @@ final class Requests
             'posts_per_page' => $perPage,
             'paged' => max(1, (int) ($args['page'] ?? 1)),
             'ignore_sticky_posts' => true,
-            'meta_query' => [
+            'meta_query' => [ // phpcs:ignore WordPress.DB.SlowDBQuery -- Status and votes are indexed meta; requests are a post type.
                 'relation' => 'AND',
                 'pinned' => ['key' => '_ruvelo_pinned', 'type' => 'NUMERIC'],
                 'votes' => ['key' => '_ruvelo_votes', 'type' => 'NUMERIC'],
@@ -447,7 +447,7 @@ final class Requests
             $tax[] = ['taxonomy' => PostTypes::TAG, 'field' => 'slug', 'terms' => sanitize_title($args['tag'])];
         }
         if ($tax !== []) {
-            $query['tax_query'] = $tax;
+            $query['tax_query'] = $tax; // phpcs:ignore WordPress.DB.SlowDBQuery -- One category or tag.
         }
         if (! empty($args['search'])) {
             $query['s'] = sanitize_text_field($args['search']);
@@ -487,7 +487,7 @@ final class Requests
         $table = Install::votesTable();
         $days = (int) apply_filters('ruvelo_feedback_trending_days', 14);
         $since = gmdate('Y-m-d H:i:s', time() - max(1, $days) * DAY_IN_SECONDS);
-        $clauses['join'] .= $wpdb->prepare(" LEFT JOIN (SELECT request_id, COUNT(*) AS ruvelo_recent FROM {$table} WHERE confirmed = 1 AND created_at >= %s GROUP BY request_id) ruvelo_trend ON ruvelo_trend.request_id = {$wpdb->posts}.ID", $since); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table names.
+        $clauses['join'] .= $wpdb->prepare(' LEFT JOIN (SELECT request_id, COUNT(*) AS ruvelo_recent FROM %i WHERE confirmed = 1 AND created_at >= %s GROUP BY request_id) ruvelo_trend ON ruvelo_trend.request_id = %i.ID', $table, $since, $wpdb->posts);
         $clauses['orderby'] = 'COALESCE(ruvelo_trend.ruvelo_recent, 0) DESC, '.$clauses['orderby'];
 
         return $clauses;
@@ -536,15 +536,13 @@ final class Requests
         }
 
         global $wpdb;
-        $likes = [];
-        $values = [PostTypes::REQUEST];
+        $ids = [];
         foreach ($words as $word) {
-            $likes[] = 'p.post_title LIKE %s';
-            $values[] = '%'.$wpdb->esc_like($word).'%';
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- A title search the post API can't express (any word, not all).
+            $found = $wpdb->get_col($wpdb->prepare("SELECT ID FROM %i WHERE post_type = %s AND post_status = 'publish' AND post_title LIKE %s AND ID <> %d LIMIT 50", $wpdb->posts, PostTypes::REQUEST, '%'.$wpdb->esc_like($word).'%', $exclude));
+            $ids = array_merge($ids, $found);
         }
-        $values[] = $exclude;
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber -- Built from placeholders only.
-        $ids = $wpdb->get_col($wpdb->prepare("SELECT p.ID FROM {$wpdb->posts} p WHERE p.post_type = %s AND p.post_status = 'publish' AND (".implode(' OR ', $likes).') AND p.ID <> %d LIMIT 50', ...$values));
+        $ids = array_slice(array_unique(array_map('intval', $ids)), 0, 50);
 
         $posts = [];
         $titles = [];
@@ -596,7 +594,7 @@ final class Requests
                 'post_status' => 'publish',
                 'posts_per_page' => $limit,
                 'no_found_rows' => true,
-                'meta_query' => [
+                'meta_query' => [ // phpcs:ignore WordPress.DB.SlowDBQuery -- Status and votes are indexed meta; requests are a post type.
                     'status' => ['key' => '_ruvelo_status', 'value' => $status],
                     'votes' => ['key' => '_ruvelo_votes', 'type' => 'NUMERIC'],
                     'changed' => ['key' => '_ruvelo_status_changed', 'type' => 'NUMERIC'],

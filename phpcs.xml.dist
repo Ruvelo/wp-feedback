@@ -19,10 +19,7 @@
     <config name="testVersion" value="8.2-"/>
 
     <rule ref="WordPress.Security"/>
-    <rule ref="WordPress.DB">
-        <!-- Requests are a post type: filtering and sorting by status and votes is a meta query by design. -->
-        <exclude name="WordPress.DB.SlowDBQuery"/>
-    </rule>
+    <rule ref="WordPress.DB"/>
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">

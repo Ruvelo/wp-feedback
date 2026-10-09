@@ -32,8 +32,8 @@ global $wpdb;
 
 foreach (['ruvelo_request', 'ruvelo_entry'] as $ruvelo_type) {
     do {
-        $ruvelo_ids = get_posts(['post_type' => $ruvelo_type, 'post_status' => 'any', 'numberposts' => 200, 'fields' => 'ids', 'suppress_filters' => true]);
-        $ruvelo_merged = get_posts(['post_type' => $ruvelo_type, 'post_status' => 'ruvelo_merged', 'numberposts' => 200, 'fields' => 'ids', 'suppress_filters' => true]);
+        $ruvelo_ids = get_posts(['post_type' => $ruvelo_type, 'post_status' => 'any', 'numberposts' => 200, 'fields' => 'ids']);
+        $ruvelo_merged = get_posts(['post_type' => $ruvelo_type, 'post_status' => 'ruvelo_merged', 'numberposts' => 200, 'fields' => 'ids']);
         foreach (array_merge($ruvelo_ids, $ruvelo_merged) as $ruvelo_id) {
             wp_delete_post((int) $ruvelo_id, true);
         }
@@ -56,7 +56,7 @@ foreach (['ruvelo_request_category', 'ruvelo_request_tag', 'ruvelo_entry_label']
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange -- Removing the plugin's own tables.
 $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}ruvelo_feedback_votes");
 $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}ruvelo_feedback_outbox");
-$wpdb->delete($wpdb->usermeta, ['meta_key' => 'ruvelo_feedback_seen']); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_meta_key
+$wpdb->delete($wpdb->usermeta, ['meta_key' => 'ruvelo_feedback_seen']); // phpcs:ignore WordPress.DB.SlowDBQuery -- Runs once, on uninstall.
 // phpcs:enable
 
 $ruvelo_pages = get_option('ruvelo_feedback_pages', []);

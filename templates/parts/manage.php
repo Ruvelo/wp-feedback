@@ -18,12 +18,12 @@ $ruvelo_action = admin_url('admin-post.php');
 $ruvelo_targets = get_posts([
     'post_type' => PostTypes::REQUEST,
     'post_status' => 'publish',
-    'posts_per_page' => 100,
-    'exclude' => [$ruvelo_post->ID],
-    'meta_key' => '_ruvelo_votes', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_meta_key -- Managers only.
+    'posts_per_page' => 101,
+    'meta_key' => '_ruvelo_votes', // phpcs:ignore WordPress.DB.SlowDBQuery -- Sorting by votes, managers only.
     'orderby' => 'meta_value_num',
     'order' => 'DESC',
 ]);
+$ruvelo_targets = array_values(array_filter($ruvelo_targets, static fn (WP_Post $target): bool => $target->ID !== $ruvelo_post->ID));
 $ruvelo_hidden = static function (string $op) use ($ruvelo_post): void {
     echo '<input type="hidden" name="action" value="ruvelo_feedback_manage">';
     echo '<input type="hidden" name="op" value="'.esc_attr($op).'">';
