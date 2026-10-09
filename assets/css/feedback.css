@@ -1,3 +1,12 @@
+/*
+ * Ruvelo Feedback: the Ruvelo house style, scoped to .ruvelo-fb so it never
+ * leaks into the theme. Re-theme by overriding any --ruvelo-feedback-*
+ * variable on .ruvelo-fb, or use the "Match theme" block style.
+ *
+ * Rules for buttons and form controls start with .ruvelo-fb:not(#ruvelo-fb-x):
+ * the :not() adds the specificity of an id, so classic themes that style
+ * every button with long selectors can't override them.
+ */
 .ruvelo-fb {
     --ruvelo-feedback-bg: #ffffff;
     --ruvelo-feedback-subtle: #f8f8fc;
@@ -115,14 +124,14 @@
 .ruvelo-fb-panel--soft h2, .ruvelo-fb-panel--soft h3 { color: var(--ruvelo-feedback-accent-ink) !important; }
 .ruvelo-fb-panel h3 { font-size: 1rem; margin: 0 0 .3rem; }
 .ruvelo-fb-panel p { margin: 0; color: var(--ruvelo-feedback-text-2); font-size: .9rem; }
-.ruvelo-fb-panel .ruvelo-fb-btn { margin-top: .9rem; width: 100%; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-panel .ruvelo-fb-btn { margin-top: .9rem; width: 100%; }
 
 /* Toolbar: search and sort */
 .ruvelo-fb-toolbar { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-bottom: 1rem; }
 .ruvelo-fb-search { position: relative; flex: 1 1 16rem; }
 .ruvelo-fb-search::before { content: ""; position: absolute; left: .8rem; top: 50%; width: .85rem; height: .85rem; translate: 0 -50%; background: var(--ruvelo-feedback-text-3); pointer-events: none; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M7 1.5a5.5 5.5 0 0 1 4.38 8.83l3.15 3.14-1.06 1.06-3.14-3.15A5.5 5.5 0 1 1 7 1.5Zm0 1.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M7 1.5a5.5 5.5 0 0 1 4.38 8.83l3.15 3.14-1.06 1.06-3.14-3.15A5.5 5.5 0 1 1 7 1.5Zm0 1.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z'/%3E%3C/svg%3E") center / contain no-repeat; }
-.ruvelo-fb .ruvelo-fb-search input[type=search] { padding-left: 2.2rem; background: var(--ruvelo-feedback-muted); border-color: transparent; }
-.ruvelo-fb .ruvelo-fb-search input[type=search]:focus { background: var(--ruvelo-feedback-bg); border-color: var(--ruvelo-feedback-accent); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-search input[type=search] { padding-left: 2.2rem; background: var(--ruvelo-feedback-muted); border-color: transparent; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-search input[type=search]:focus { background: var(--ruvelo-feedback-bg); border-color: var(--ruvelo-feedback-accent); }
 .ruvelo-fb-seg { display: inline-flex; padding: .2rem; gap: .15rem; background: var(--ruvelo-feedback-muted); border-radius: calc(var(--ruvelo-feedback-radius) + 2px); }
 .ruvelo-fb .ruvelo-fb-seg a { padding: .35rem .75rem; border-radius: var(--ruvelo-feedback-radius); color: var(--ruvelo-feedback-text-2); font-size: .85rem; font-weight: 500; }
 .ruvelo-fb .ruvelo-fb-seg a:hover { color: var(--ruvelo-feedback-ink); text-decoration: none; }
@@ -146,17 +155,17 @@
 
 /* The vote button */
 .ruvelo-fb-vote { margin: 0; }
-.ruvelo-fb .ruvelo-fb-vote-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .05rem; width: 3.4rem; height: 3.6rem; padding: 0; border-radius: var(--ruvelo-feedback-radius); border: 1px solid var(--ruvelo-feedback-line); background: var(--ruvelo-feedback-bg); color: var(--ruvelo-feedback-ink); font: 600 .95rem/1 var(--ruvelo-feedback-sans); font-variant-numeric: tabular-nums; cursor: pointer; box-shadow: none; transition: border-color .15s, background .15s, color .15s, transform .1s; }
-.ruvelo-fb .ruvelo-fb-vote-btn svg { width: 1.05rem; height: 1.05rem; color: var(--ruvelo-feedback-text-3); transition: transform .15s; }
-.ruvelo-fb .ruvelo-fb-vote-btn:hover { border-color: var(--ruvelo-feedback-accent); background: var(--ruvelo-feedback-accent-soft); color: var(--ruvelo-feedback-accent-ink); text-decoration: none; }
-.ruvelo-fb .ruvelo-fb-vote-btn:hover svg { color: var(--ruvelo-feedback-accent); transform: translateY(-2px); }
-.ruvelo-fb .ruvelo-fb-vote-btn:active { transform: scale(.96); }
-.ruvelo-fb .ruvelo-fb-vote-btn[aria-pressed=true] { background: var(--ruvelo-feedback-accent); border-color: var(--ruvelo-feedback-accent); color: var(--ruvelo-feedback-on-accent); box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--ruvelo-feedback-accent) 70%, transparent); }
-.ruvelo-fb .ruvelo-fb-vote-btn[aria-pressed=true] svg { color: var(--ruvelo-feedback-on-accent); }
-.ruvelo-fb .ruvelo-fb-vote-btn.is-locked { cursor: default; background: var(--ruvelo-feedback-subtle); }
-.ruvelo-fb .ruvelo-fb-vote-btn.is-locked:hover { border-color: var(--ruvelo-feedback-line); color: var(--ruvelo-feedback-ink); }
-.ruvelo-fb .ruvelo-fb-vote-btn.is-locked:hover svg { transform: none; color: var(--ruvelo-feedback-text-3); }
-.ruvelo-fb .ruvelo-fb-vote-btn--big { width: 4.25rem; height: 4.5rem; font-size: 1.2rem; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .05rem; width: 3.4rem; height: 3.6rem; padding: 0; border-radius: var(--ruvelo-feedback-radius); border: 1px solid var(--ruvelo-feedback-line); background: var(--ruvelo-feedback-bg); color: var(--ruvelo-feedback-ink); font: 600 .95rem/1 var(--ruvelo-feedback-sans); font-variant-numeric: tabular-nums; cursor: pointer; box-shadow: none; transition: border-color .15s, background .15s, color .15s, transform .1s; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn svg { width: 1.05rem; height: 1.05rem; color: var(--ruvelo-feedback-text-3); transition: transform .15s; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn:hover { border-color: var(--ruvelo-feedback-accent); background: var(--ruvelo-feedback-accent-soft); color: var(--ruvelo-feedback-accent-ink); text-decoration: none; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn:hover svg { color: var(--ruvelo-feedback-accent); transform: translateY(-2px); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn:active { transform: scale(.96); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn[aria-pressed=true] { background: var(--ruvelo-feedback-accent); border-color: var(--ruvelo-feedback-accent); color: var(--ruvelo-feedback-on-accent); box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--ruvelo-feedback-accent) 70%, transparent); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn[aria-pressed=true] svg { color: var(--ruvelo-feedback-on-accent); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn.is-locked { cursor: default; background: var(--ruvelo-feedback-subtle); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn.is-locked:hover { border-color: var(--ruvelo-feedback-line); color: var(--ruvelo-feedback-ink); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn.is-locked:hover svg { transform: none; color: var(--ruvelo-feedback-text-3); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn--big { width: 4.25rem; height: 4.5rem; font-size: 1.2rem; }
 
 /* Chips, avatars, buttons */
 .ruvelo-fb-chip { display: inline-flex; align-items: center; gap: .35rem; border-radius: 999px; padding: .1rem .6rem; font-size: .75rem; font-weight: 500; line-height: 1.6; white-space: nowrap; background: var(--ruvelo-fb-tone-soft, var(--ruvelo-feedback-accent-soft)); color: var(--ruvelo-fb-tone, var(--ruvelo-feedback-accent-ink)) !important; }
@@ -170,26 +179,26 @@
 .ruvelo-fb-avatars { display: flex; flex-wrap: wrap; gap: .25rem; }
 .ruvelo-fb-avatars .ruvelo-fb-avatar { letter-spacing: -.02em; }
 
-.ruvelo-fb .ruvelo-fb-btn, .ruvelo-fb button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; font: 500 .875rem/1 var(--ruvelo-feedback-sans); padding: .62rem .95rem; border-radius: var(--ruvelo-feedback-radius); border: 1px solid var(--ruvelo-feedback-accent); background: var(--ruvelo-feedback-accent); color: var(--ruvelo-feedback-on-accent); cursor: pointer; box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--ruvelo-feedback-accent) 70%, transparent); text-decoration: none; }
-.ruvelo-fb .ruvelo-fb-btn:hover, .ruvelo-fb button:hover { background: var(--ruvelo-feedback-accent-ink); border-color: var(--ruvelo-feedback-accent-ink); text-decoration: none; }
-.ruvelo-fb .ruvelo-fb-btn svg, .ruvelo-fb button svg { width: 1rem; height: 1rem; }
-.ruvelo-fb .ruvelo-fb-btn--quiet, .ruvelo-fb button.ruvelo-fb-btn--quiet { background: transparent; color: var(--ruvelo-feedback-ink); border-color: var(--ruvelo-feedback-line); box-shadow: none; }
-.ruvelo-fb .ruvelo-fb-btn--quiet:hover, .ruvelo-fb button.ruvelo-fb-btn--quiet:hover { background: var(--ruvelo-feedback-accent-soft); border-color: var(--ruvelo-feedback-accent); color: var(--ruvelo-feedback-accent-ink); }
-.ruvelo-fb button.ruvelo-fb-btn--danger { background: transparent; color: var(--ruvelo-feedback-danger-ink); border-color: var(--ruvelo-feedback-line); box-shadow: none; }
-.ruvelo-fb button.ruvelo-fb-btn--danger:hover { background: var(--ruvelo-feedback-danger-soft); border-color: var(--ruvelo-feedback-danger); }
-.ruvelo-fb .ruvelo-fb-btn--small, .ruvelo-fb button.ruvelo-fb-btn--small { padding: .38rem .65rem; font-size: .8rem; }
-.ruvelo-fb button.ruvelo-fb-link { background: none; border: 0; padding: 0; box-shadow: none; color: var(--ruvelo-feedback-text-3); font-size: .8rem; font-weight: 500; }
-.ruvelo-fb button.ruvelo-fb-link:hover { background: none; color: var(--ruvelo-feedback-accent); text-decoration: underline; }
-.ruvelo-fb button.ruvelo-fb-link--danger:hover { color: var(--ruvelo-feedback-danger-ink); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-btn, .ruvelo-fb:not(#ruvelo-fb-x) button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; font: 500 .875rem/1 var(--ruvelo-feedback-sans); padding: .62rem .95rem; border-radius: var(--ruvelo-feedback-radius); border: 1px solid var(--ruvelo-feedback-accent); background: var(--ruvelo-feedback-accent); color: var(--ruvelo-feedback-on-accent); cursor: pointer; box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--ruvelo-feedback-accent) 70%, transparent); text-decoration: none; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-btn:hover, .ruvelo-fb:not(#ruvelo-fb-x) button:hover { background: var(--ruvelo-feedback-accent-ink); border-color: var(--ruvelo-feedback-accent-ink); text-decoration: none; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-btn svg, .ruvelo-fb:not(#ruvelo-fb-x) button svg { width: 1rem; height: 1rem; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-btn--quiet, .ruvelo-fb:not(#ruvelo-fb-x) button.ruvelo-fb-btn--quiet { background: transparent; color: var(--ruvelo-feedback-ink); border-color: var(--ruvelo-feedback-line); box-shadow: none; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-btn--quiet:hover, .ruvelo-fb:not(#ruvelo-fb-x) button.ruvelo-fb-btn--quiet:hover { background: var(--ruvelo-feedback-accent-soft); border-color: var(--ruvelo-feedback-accent); color: var(--ruvelo-feedback-accent-ink); }
+.ruvelo-fb:not(#ruvelo-fb-x) button.ruvelo-fb-btn--danger { background: transparent; color: var(--ruvelo-feedback-danger-ink); border-color: var(--ruvelo-feedback-line); box-shadow: none; }
+.ruvelo-fb:not(#ruvelo-fb-x) button.ruvelo-fb-btn--danger:hover { background: var(--ruvelo-feedback-danger-soft); border-color: var(--ruvelo-feedback-danger); }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-btn--small, .ruvelo-fb:not(#ruvelo-fb-x) button.ruvelo-fb-btn--small { padding: .38rem .65rem; font-size: .8rem; }
+.ruvelo-fb:not(#ruvelo-fb-x) button.ruvelo-fb-link { background: none; border: 0; padding: 0; box-shadow: none; color: var(--ruvelo-feedback-text-3); font-size: .8rem; font-weight: 500; }
+.ruvelo-fb:not(#ruvelo-fb-x) button.ruvelo-fb-link:hover { background: none; color: var(--ruvelo-feedback-accent); text-decoration: underline; }
+.ruvelo-fb:not(#ruvelo-fb-x) button.ruvelo-fb-link--danger:hover { color: var(--ruvelo-feedback-danger-ink); }
 
 /* Forms */
-.ruvelo-fb input[type=text], .ruvelo-fb input[type=search], .ruvelo-fb input[type=url], .ruvelo-fb input[type=number], .ruvelo-fb input[type=datetime-local], .ruvelo-fb select, .ruvelo-fb textarea { font: inherit; font-size: .925rem; color: inherit; background: var(--ruvelo-feedback-bg); border: 1px solid var(--ruvelo-feedback-line); border-radius: var(--ruvelo-feedback-radius); padding: .55rem .75rem; width: 100%; }
-.ruvelo-fb input:focus, .ruvelo-fb textarea:focus, .ruvelo-fb select:focus { outline: none; border-color: var(--ruvelo-feedback-accent); box-shadow: 0 0 0 3px var(--ruvelo-feedback-accent-soft); }
-.ruvelo-fb textarea { min-height: 9rem; resize: vertical; line-height: 1.6; }
-.ruvelo-fb textarea.ruvelo-fb-code { font: .875rem/1.65 var(--ruvelo-feedback-mono); }
+.ruvelo-fb:not(#ruvelo-fb-x) input[type=text], .ruvelo-fb:not(#ruvelo-fb-x) input[type=search], .ruvelo-fb:not(#ruvelo-fb-x) input[type=url], .ruvelo-fb:not(#ruvelo-fb-x) input[type=number], .ruvelo-fb:not(#ruvelo-fb-x) input[type=datetime-local], .ruvelo-fb:not(#ruvelo-fb-x) select, .ruvelo-fb:not(#ruvelo-fb-x) textarea { font: inherit; font-size: .925rem; color: inherit; background: var(--ruvelo-feedback-bg); border: 1px solid var(--ruvelo-feedback-line); border-radius: var(--ruvelo-feedback-radius); padding: .55rem .75rem; width: 100%; }
+.ruvelo-fb:not(#ruvelo-fb-x) input:focus, .ruvelo-fb:not(#ruvelo-fb-x) textarea:focus, .ruvelo-fb:not(#ruvelo-fb-x) select:focus { outline: none; border-color: var(--ruvelo-feedback-accent); box-shadow: 0 0 0 3px var(--ruvelo-feedback-accent-soft); }
+.ruvelo-fb:not(#ruvelo-fb-x) textarea { min-height: 9rem; resize: vertical; line-height: 1.6; }
+.ruvelo-fb:not(#ruvelo-fb-x) textarea.ruvelo-fb-code { font: .875rem/1.65 var(--ruvelo-feedback-mono); }
 .ruvelo-fb label { display: block; font-weight: 500; font-size: .85rem; margin: 1.25rem 0 .4rem; }
 .ruvelo-fb label.ruvelo-fb-check { display: flex; align-items: center; gap: .5rem; font-weight: 400; margin: .5rem 0 0; color: var(--ruvelo-feedback-text-2); }
-.ruvelo-fb input[type=checkbox] { accent-color: var(--ruvelo-feedback-accent); width: 1rem; height: 1rem; margin: 0; }
+.ruvelo-fb:not(#ruvelo-fb-x) input[type=checkbox] { accent-color: var(--ruvelo-feedback-accent); width: 1rem; height: 1rem; margin: 0; }
 .ruvelo-fb-hint { color: var(--ruvelo-feedback-text-3); font-size: .8rem; margin: .4rem 0 0; }
 .ruvelo-fb-error { color: var(--ruvelo-feedback-danger-ink); font-size: .85rem; margin: .4rem 0 0; }
 .ruvelo-fb-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.25rem; }
@@ -272,7 +281,7 @@
 .ruvelo-fb .ruvelo-fb-comment-tools a { color: var(--ruvelo-feedback-text-3); font-size: .8rem; font-weight: 500; }
 .ruvelo-fb .ruvelo-fb-comment-tools a:hover { color: var(--ruvelo-feedback-accent); }
 .ruvelo-fb-compose { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .8rem; padding: 1rem 0 0; }
-.ruvelo-fb-compose textarea { min-height: 5.5rem; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-compose textarea { min-height: 5.5rem; }
 .ruvelo-fb-compose .ruvelo-fb-row { margin-top: .6rem; justify-content: space-between; }
 .ruvelo-fb-signin { padding: 1rem 1.2rem; border-radius: var(--ruvelo-feedback-radius-lg); background: var(--ruvelo-feedback-subtle); color: var(--ruvelo-feedback-text-2); font-size: .9rem; margin: 0; }
 
@@ -280,11 +289,11 @@
 .ruvelo-fb-voters p { margin: 0; font-size: .85rem; color: var(--ruvelo-feedback-text-2); }
 .ruvelo-fb-facts { display: grid; gap: .9rem; margin: 0; font-size: .875rem; }
 .ruvelo-fb-facts dt { color: var(--ruvelo-feedback-text-3); font-size: .8rem; margin-bottom: .2rem; }
-.ruvelo-fb-facts dd { margin: 0; display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; }
+.ruvelo-fb .ruvelo-fb-facts dd { margin: 0; display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; }
 .ruvelo-fb-manage { display: grid; gap: .25rem; }
 .ruvelo-fb-manage form { margin: 0; }
 .ruvelo-fb-manage label { margin-top: .75rem; }
-.ruvelo-fb-manage textarea { min-height: 5rem; font-size: .875rem; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-manage textarea { min-height: 5rem; font-size: .875rem; }
 .ruvelo-fb-manage .ruvelo-fb-row { margin-top: .75rem; }
 .ruvelo-fb-manage details { border-top: 1px solid var(--ruvelo-feedback-line); padding-top: .75rem; margin-top: .75rem; }
 .ruvelo-fb-manage summary { cursor: pointer; font-size: .875rem; font-weight: 500; color: var(--ruvelo-feedback-text-2); }
@@ -337,8 +346,8 @@
 .ruvelo-fb .ruvelo-fb-admin-tabs a:hover { color: var(--ruvelo-feedback-ink); text-decoration: none; }
 .ruvelo-fb .ruvelo-fb-admin-tabs a[aria-current] { color: var(--ruvelo-feedback-accent-ink); border-bottom-color: var(--ruvelo-feedback-accent); }
 .ruvelo-fb-filters { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 0 0 1.25rem; }
-.ruvelo-fb-filters input[type=search] { width: auto; min-width: 14rem; flex: 1 1 14rem; max-width: 24rem; }
-.ruvelo-fb-filters select { width: auto; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-filters input[type=search] { width: auto; min-width: 14rem; flex: 1 1 14rem; max-width: 24rem; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-filters select { width: auto; }
 .ruvelo-fb-table-wrap { overflow-x: auto; border: 1px solid var(--ruvelo-feedback-line); border-radius: var(--ruvelo-feedback-radius-lg); }
 .ruvelo-fb-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
 .ruvelo-fb-table th { text-align: left; font-weight: 500; color: var(--ruvelo-feedback-text-2); background: var(--ruvelo-feedback-subtle); font-size: .8rem; white-space: nowrap; }
@@ -353,7 +362,7 @@
 
 .ruvelo-fb-editor { display: grid; gap: 1rem 2.5rem; }
 .ruvelo-fb-editor-preview { min-width: 0; border-top: 1px solid var(--ruvelo-feedback-line); padding-top: 1rem; }
-.ruvelo-fb-editor textarea[name=body] { min-height: 22rem; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-editor textarea[name=body] { min-height: 22rem; }
 .ruvelo-fb-fields { display: grid; gap: 0 1rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
 .ruvelo-fb-checks { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
 .ruvelo-fb-picklist { max-height: 15rem; overflow-y: auto; border: 1px solid var(--ruvelo-feedback-line); border-radius: var(--ruvelo-feedback-radius); padding: .35rem .75rem .6rem; }
@@ -362,14 +371,14 @@
 @media (min-width: 64rem) {
     .ruvelo-fb-editor { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .ruvelo-fb-editor-preview { border-top: 0; border-left: 1px solid var(--ruvelo-feedback-line); padding: 0 0 0 2.5rem; }
-    .ruvelo-fb-editor textarea[name=body] { min-height: 50vh; }
+    .ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-editor textarea[name=body] { min-height: 50vh; }
 }
 .ruvelo-fb-taxonomy { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); align-items: start; }
 .ruvelo-fb-tax-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; padding: .6rem 0; border-bottom: 1px solid var(--ruvelo-feedback-line); }
 .ruvelo-fb-tax-row form { display: flex; gap: .5rem; align-items: center; margin: 0; }
 .ruvelo-fb-tax-row form:first-child { flex: 1 1 12rem; }
-.ruvelo-fb-tax-row input[type=text] { flex: 1; }
-.ruvelo-fb-tax-row input[type=number] { width: 4.5rem; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-tax-row input[type=text] { flex: 1; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-tax-row input[type=number] { width: 4.5rem; }
 .ruvelo-fb-stats { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); margin-bottom: 2rem; }
 .ruvelo-fb-stat { border: 1px solid var(--ruvelo-feedback-line); border-radius: var(--ruvelo-feedback-radius-lg); padding: 1rem 1.15rem; }
 .ruvelo-fb-stat small { color: var(--ruvelo-feedback-text-3); font-size: .8rem; }
@@ -393,8 +402,8 @@
     .ruvelo-fb-log-date time { display: inline; margin-right: .5rem; }
     .ruvelo-fb-request-body { padding-left: 0; }
     .ruvelo-fb-card { padding: .85rem; gap: .8rem; }
-    .ruvelo-fb .ruvelo-fb-vote-btn { width: 3rem; height: 3.3rem; }
-    .ruvelo-fb .ruvelo-fb-vote-btn--big { width: 3.6rem; height: 4rem; }
+    .ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn { width: 3rem; height: 3.3rem; }
+    .ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-vote-btn--big { width: 3.6rem; height: 4rem; }
     .ruvelo-fb-toolbar .ruvelo-fb-seg { width: 100%; }
     .ruvelo-fb-toolbar .ruvelo-fb-seg a { flex: 1; text-align: center; }
 }
@@ -475,8 +484,8 @@
 .ruvelo-fb .comment-reply-title small a { font-size: .8rem; font-weight: 500; }
 .ruvelo-fb .comment-form p { margin: 0 0 .5rem; }
 .ruvelo-fb .comment-form label { margin-top: .75rem; }
-.ruvelo-fb .comment-form input[type=email] { font: inherit; font-size: .925rem; color: inherit; background: var(--ruvelo-feedback-bg); border: 1px solid var(--ruvelo-feedback-line); border-radius: var(--ruvelo-feedback-radius); padding: .55rem .75rem; width: 100%; }
-.ruvelo-fb .comment-form textarea { min-height: 6rem; }
+.ruvelo-fb:not(#ruvelo-fb-x) .comment-form input[type=email] { font: inherit; font-size: .925rem; color: inherit; background: var(--ruvelo-feedback-bg); border: 1px solid var(--ruvelo-feedback-line); border-radius: var(--ruvelo-feedback-radius); padding: .55rem .75rem; width: 100%; }
+.ruvelo-fb:not(#ruvelo-fb-x) .comment-form textarea { min-height: 6rem; }
 .ruvelo-fb .comment-notes, .ruvelo-fb .logged-in-as, .ruvelo-fb .comment-form-cookies-consent { color: var(--ruvelo-feedback-text-3); font-size: .8rem; }
 .ruvelo-fb .comment-form-cookies-consent { display: flex; gap: .5rem; align-items: flex-start; }
 .ruvelo-fb .comment-form-cookies-consent label { margin: 0; font-weight: 400; }
@@ -485,7 +494,7 @@
 
 /* Admin-only bits shown on the front end */
 .ruvelo-fb-manage h2 { font-size: .8rem; }
-.ruvelo-fb-manage select { margin-top: 0; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-manage select { margin-top: 0; }
 
 /* Block style: "Match theme" inherits the theme's fonts and colours */
 .ruvelo-fb.is-style-theme { --ruvelo-feedback-sans: inherit; --ruvelo-feedback-bg: transparent; --ruvelo-feedback-ink: currentColor; background: transparent; font-family: inherit; }
@@ -513,6 +522,13 @@
     .ruvelo-fb .ruvelo-fb-filter a[aria-current] { border-color: transparent; }
     .ruvelo-fb-filter .ruvelo-fb-count { margin-left: .25rem; }
     .ruvelo-fb-filter .ruvelo-fb-dot { display: none; }
-    .ruvelo-fb-head .ruvelo-fb-btn { width: 100%; }
+    .ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-head .ruvelo-fb-btn { width: 100%; }
     .ruvelo-fb-portal-nav { margin-bottom: 1.25rem; }
 }
+
+/* Prose spacing that doesn't depend on the theme */
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-prose > * { margin: 0; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-prose > * + * { margin-top: 1em; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-prose :is(ul, ol) { padding-left: 1.4em; }
+.ruvelo-fb:not(#ruvelo-fb-x) .ruvelo-fb-facts :is(dd, dt) { margin-left: 0; margin-right: 0; padding-left: 0; }
+.ruvelo-fb .ruvelo-fb-crumbs li + li::before { color: var(--ruvelo-feedback-text-3); }

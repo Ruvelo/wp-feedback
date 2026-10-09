@@ -29,6 +29,11 @@ final class Setup
         ];
 
         $ids = $existing;
+        $author = get_current_user_id();
+        if ($author === 0) {
+            $admins = get_users(['role' => 'administrator', 'number' => 1, 'orderby' => 'ID', 'fields' => 'ID']);
+            $author = (int) ($admins[0] ?? 0);
+        }
         foreach ($pages as $key => [$title, $slug, $content, $parent]) {
             if (isset($ids[$key])) {
                 continue;
@@ -41,6 +46,7 @@ final class Setup
                 'post_content' => $content,
                 'post_parent' => is_string($parent) ? ($ids[$parent] ?? 0) : 0,
                 'comment_status' => 'closed',
+                'post_author' => $author,
             ], true);
             if ($id instanceof WP_Error) {
                 return $id;
