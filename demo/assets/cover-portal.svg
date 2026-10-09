@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Geist, ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#3d4eff"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16162a"/><stop offset="1" stop-color="#2b38d6"/></linearGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#fff" stroke-opacity=".12"/></pattern>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bg)"/>
+  <rect width="1200" height="600" fill="url(#grid)"/>
+  <g transform="translate(250 80)">
+    <rect width="700" height="440" rx="22" fill="#fff"/>
+    <text x="44" y="68" font-size="22" font-weight="600" fill="#16162a">Payment method</text>
+    <text x="44" y="100" font-size="17" fill="#74748b">Used for your Halyard Scale plan</text>
+    <rect x="44" y="132" width="330" height="200" rx="18" fill="url(#card)"/>
+    <rect x="72" y="166" width="46" height="34" rx="6" fill="#ffc266"/>
+    <text x="72" y="268" font-size="24" fill="#fff" letter-spacing="3">•••• •••• •••• 4242</text>
+    <text x="72" y="306" font-size="16" fill="#c4b5fd">Expires 09/29</text>
+    <rect x="410" y="148" width="246" height="48" rx="10" fill="#3d4eff"/>
+    <text x="533" y="179" font-size="18" font-weight="500" fill="#fff" text-anchor="middle">Update card</text>
+    <rect x="410" y="212" width="246" height="48" rx="10" fill="#fff" stroke="#e4e4ef" stroke-width="2"/>
+    <text x="533" y="243" font-size="18" font-weight="500" fill="#16162a" text-anchor="middle">Download invoices</text>
+    <circle cx="66" cy="384" r="14" fill="#e8f8ef"/>
+    <path d="m59 384 5 5 9-10" fill="none" stroke="#167a4a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="92" y="391" font-size="18" fill="#4b4b63">Card updated. Your next invoice will use it.</text>
+  </g>
+</svg>
