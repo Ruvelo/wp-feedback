@@ -298,7 +298,7 @@ Pull requests are welcome. Clone, `composer install`, `bin/dev-site.sh` for a lo
 
 ## Credits
 
-Built by [François Bultez](https://github.com/francoisbultez) at [Ruvelo](https://github.com/Ruvelo), and everyone who [contributes](https://github.com/Ruvelo/wp-feedback/graphs/contributors).
+Built by [François Bultez](https://github.com/francoisbultez) at [Valtry](https://valtry.co.uk/?utm_source=ruvelo&utm_medium=github&utm_campaign=wp-feedback), the website security scanner, and everyone who [contributes](https://github.com/Ruvelo/wp-feedback/graphs/contributors).
 
 ## License
 

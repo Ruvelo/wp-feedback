@@ -40,7 +40,7 @@ Your users ask for things and vote. You plan, build and ship. When it ships, eve
 * **Your data stays yours.** Deleting the plugin keeps your requests and changelog unless you tick "Also delete every request, vote, changelog entry and setting". Scheduled emails are always cleared.
 * **Accessible and light.** Labels, focus states, keyboard support and live announcements, aiming at WCAG 2.2 AA. Forms work without JavaScript; it only makes votes and suggestions happen in place. Respects reduced motion and offers light, dark or system colour schemes.
 
-Ruvelo Feedback is built by Ruvelo, a small studio making free, open-source extensions for WordPress and Laravel. The code, issues and roadmap are on [GitHub](https://github.com/Ruvelo/wp-feedback).
+Ruvelo Feedback is built by [Valtry](https://valtry.co.uk/?utm_source=ruvelo&utm_medium=wordpress&utm_campaign=wp-feedback), the website security scanner, as part of Ruvelo, its free and open-source extensions for WordPress and Laravel. The code, issues and roadmap are on [GitHub](https://github.com/Ruvelo/wp-feedback).
 
 == Installation ==
 
