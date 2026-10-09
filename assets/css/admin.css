@@ -1,0 +1,84 @@
+/* Ruvelo Feedback in the admin: status chips, the editor panel, settings and stats. */
+#wpbody, .edit-post-meta-boxes-area, .interface-interface-skeleton {
+    --ruvelo-feedback-bg: #ffffff;
+    --ruvelo-feedback-subtle: #f8f8fc;
+    --ruvelo-feedback-muted: #f0f0f7;
+    --ruvelo-feedback-line: #e4e4ef;
+    --ruvelo-feedback-ink: #16162a;
+    --ruvelo-feedback-text-2: #4b4b63;
+    --ruvelo-feedback-text-3: #74748b;
+    --ruvelo-feedback-accent: #3d4eff;
+    --ruvelo-feedback-accent-2: #a78bfa;
+    --ruvelo-feedback-accent-ink: #2b38d6;
+    --ruvelo-feedback-accent-soft: #eef0ff;
+    --ruvelo-feedback-on-accent: #ffffff;
+    --ruvelo-feedback-lilac: #6b4fd8;
+    --ruvelo-feedback-lilac-soft: #f3effe;
+    --ruvelo-feedback-danger: #e5384f;
+    --ruvelo-feedback-danger-ink: #c42639;
+    --ruvelo-feedback-danger-soft: #fdecef;
+    --ruvelo-feedback-success: #167a4a;
+    --ruvelo-feedback-success-soft: #e8f8ef;
+    --ruvelo-feedback-warning: #b26a00;
+    --ruvelo-feedback-warning-soft: #fff4e0;
+    --ruvelo-feedback-radius: 8px;
+    --ruvelo-feedback-radius-lg: 14px;
+    --ruvelo-feedback-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+    --ruvelo-feedback-mono: "Geist Mono", ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    color-scheme: light;
+}
+.ruvelo-fb-tone-accent { --ruvelo-fb-tone: var(--ruvelo-feedback-accent-ink); --ruvelo-fb-tone-soft: var(--ruvelo-feedback-accent-soft); --ruvelo-fb-tone-dot: var(--ruvelo-feedback-accent); }
+.ruvelo-fb-tone-lilac { --ruvelo-fb-tone: var(--ruvelo-feedback-lilac); --ruvelo-fb-tone-soft: var(--ruvelo-feedback-lilac-soft); --ruvelo-fb-tone-dot: var(--ruvelo-feedback-accent-2); }
+.ruvelo-fb-tone-success { --ruvelo-fb-tone: var(--ruvelo-feedback-success); --ruvelo-fb-tone-soft: var(--ruvelo-feedback-success-soft); --ruvelo-fb-tone-dot: var(--ruvelo-feedback-success); }
+.ruvelo-fb-tone-warning { --ruvelo-fb-tone: var(--ruvelo-feedback-warning); --ruvelo-fb-tone-soft: var(--ruvelo-feedback-warning-soft); --ruvelo-fb-tone-dot: var(--ruvelo-feedback-warning); }
+.ruvelo-fb-tone-danger { --ruvelo-fb-tone: var(--ruvelo-feedback-danger-ink); --ruvelo-fb-tone-soft: var(--ruvelo-feedback-danger-soft); --ruvelo-fb-tone-dot: var(--ruvelo-feedback-danger); }
+.ruvelo-fb-tone-neutral { --ruvelo-fb-tone: var(--ruvelo-feedback-text-2); --ruvelo-fb-tone-soft: var(--ruvelo-feedback-muted); --ruvelo-fb-tone-dot: var(--ruvelo-feedback-text-3); }
+.ruvelo-fb-dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--ruvelo-fb-tone-dot, var(--ruvelo-feedback-text-3)); flex: none; }
+.ruvelo-fb-chip { display: inline-flex; align-items: center; gap: .35rem; border-radius: 999px; padding: .1rem .6rem; font-size: .75rem; font-weight: 500; line-height: 1.6; white-space: nowrap; background: var(--ruvelo-fb-tone-soft, var(--ruvelo-feedback-accent-soft)); color: var(--ruvelo-fb-tone, var(--ruvelo-feedback-accent-ink)) !important; }
+.ruvelo-fb-chip--status::before { content: ""; width: .4rem; height: .4rem; border-radius: 50%; background: var(--ruvelo-fb-tone-dot, currentColor); }
+.ruvelo-fb-chip--quiet { background: var(--ruvelo-feedback-muted); color: var(--ruvelo-feedback-text-2) !important; }
+.ruvelo-fb-chip--outline { background: transparent; box-shadow: inset 0 0 0 1px var(--ruvelo-feedback-line); color: var(--ruvelo-feedback-text-2) !important; }
+.ruvelo-fb-chip--team { background: var(--ruvelo-feedback-accent); color: var(--ruvelo-feedback-on-accent) !important; font-size: .68rem; padding: 0 .45rem; }
+.ruvelo-fb-stats { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); margin-bottom: 2rem; }
+.ruvelo-fb-stat { border: 1px solid var(--ruvelo-feedback-line); border-radius: var(--ruvelo-feedback-radius-lg); padding: 1rem 1.15rem; }
+.ruvelo-fb-stat small { color: var(--ruvelo-feedback-text-3); font-size: .8rem; }
+.ruvelo-fb-stat strong { display: block; font-size: 1.6rem; font-weight: 600; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.ruvelo-fb-chart { display: grid; grid-template-columns: repeat(var(--ruvelo-fb-weeks, 12), minmax(0, 1fr)); gap: .4rem; align-items: end; height: 11rem; padding: 1rem 1rem .5rem; border: 1px solid var(--ruvelo-feedback-line); border-radius: var(--ruvelo-feedback-radius-lg); }
+.ruvelo-fb-chart-col { display: grid; grid-template-rows: 1fr auto; gap: .35rem; height: 100%; text-align: center; font-size: .7rem; color: var(--ruvelo-feedback-text-3); font-variant-numeric: tabular-nums; }
+.ruvelo-fb-chart-bar { align-self: end; border-radius: 5px 5px 2px 2px; background: linear-gradient(var(--ruvelo-feedback-accent), color-mix(in srgb, var(--ruvelo-feedback-accent) 70%, var(--ruvelo-feedback-accent-2))); min-height: 2px; position: relative; }
+.ruvelo-fb-chart-bar span { position: absolute; bottom: calc(100% + .2rem); left: 0; right: 0; color: var(--ruvelo-feedback-text-2); font-weight: 500; }
+.ruvelo-fb-meter { display: inline-block; width: 6rem; height: .4rem; border-radius: 999px; background: var(--ruvelo-feedback-muted); vertical-align: middle; overflow: hidden; margin-right: .5rem; }
+.ruvelo-fb-meter span { display: block; height: 100%; background: var(--ruvelo-feedback-accent); border-radius: inherit; }
+.ruvelo-fb-chip { font-size: 12px; }
+.ruvelo-fb-admin-votes { display: inline-grid; place-items: center; min-width: 2.6rem; padding: .2rem .45rem; border-radius: 7px; background: var(--ruvelo-feedback-muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+.column-ruvelo_votes { width: 4.5rem; }
+.column-ruvelo_status { width: 11rem; }
+.ruvelo-fb-admin-pin { color: var(--ruvelo-feedback-text-3); font-size: 12px; }
+.ruvelo-fb-box-votes { font-size: 13px; color: var(--ruvelo-feedback-text-2); }
+.ruvelo-fb-box-votes strong { font-size: 20px; color: var(--ruvelo-feedback-ink); margin-right: .2rem; }
+.ruvelo-fb-admin-history { margin: 0; list-style: none; }
+.ruvelo-fb-admin-history li { padding: .5rem 0; border-bottom: 1px solid var(--ruvelo-feedback-line); }
+.ruvelo-fb-admin-history li:last-child { border-bottom: 0; }
+.ruvelo-fb-admin-history p { margin: .35rem 0 0; }
+.ruvelo-fb-picklist { max-height: 22rem; overflow-y: auto; border: 1px solid var(--ruvelo-feedback-line); border-radius: 8px; padding: .25rem .6rem; }
+.ruvelo-fb-picklist label { display: block; padding: .4rem 0; border-bottom: 1px solid var(--ruvelo-feedback-line); }
+.ruvelo-fb-picklist label:last-child { border-bottom: 0; }
+.ruvelo-fb-picklist-meta { display: block; margin-left: 1.6rem; color: var(--ruvelo-feedback-text-3); font-size: 12px; }
+
+.ruvelo-fb-admin .ruvelo-fb-setup { display: flex; gap: 1.25rem; align-items: flex-start; max-width: 52rem; margin: 1.25rem 0 1.5rem; padding: 1.25rem 1.4rem; border-radius: 14px; background: var(--ruvelo-feedback-accent-soft); }
+.ruvelo-fb-setup-mark { display: grid; place-items: center; flex: none; width: 2.75rem; height: 2.75rem; border-radius: 11px; background: linear-gradient(135deg, #3d4eff, #a78bfa); color: #fff; font: 700 1.2rem/1 -apple-system, system-ui, sans-serif; box-shadow: 0 8px 18px -8px rgba(61, 78, 255, .7); }
+.ruvelo-fb-setup h2 { margin: .1rem 0 .4rem; font-size: 1.15rem; color: var(--ruvelo-feedback-accent-ink); }
+.ruvelo-fb-setup p { margin: 0 0 .9rem; max-width: 40rem; }
+.ruvelo-fb-setup-links { display: flex; flex-wrap: wrap; gap: .4rem 1.25rem; margin: .25rem 0 .75rem; }
+.ruvelo-fb-setup-links a { font-weight: 500; }
+.ruvelo-fb-choice { display: block; margin: 0 0 .6rem; }
+.ruvelo-fb-admin .form-table th { width: 13rem; }
+.ruvelo-fb-statuses td { vertical-align: middle; }
+
+.ruvelo-fb-admin .ruvelo-fb-stats { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); margin: 1.25rem 0 2rem; max-width: 72rem; }
+.ruvelo-fb-admin .ruvelo-fb-stat { background: #fff; }
+.ruvelo-fb-admin .ruvelo-fb-chart { max-width: 72rem; background: #fff; box-sizing: border-box; }
+.ruvelo-fb-stats-cols { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); max-width: 72rem; margin-top: 1.5rem; }
+.ruvelo-fb-stats-cols td.num, .ruvelo-fb-stats-cols th.num { text-align: right; font-variant-numeric: tabular-nums; }
+#ruvelo-feedback-request select, #ruvelo-feedback-request textarea { width: 100%; max-width: 100%; box-sizing: border-box; }
+#ruvelo-feedback-request label strong { font-weight: 600; }

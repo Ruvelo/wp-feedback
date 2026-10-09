@@ -1,0 +1,84 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "ruvelo/feedback-board",
+    "version": "1.0.0",
+    "title": "Feedback Board",
+    "category": "widgets",
+    "icon": "lightbulb",
+    "description": "Requests people can vote on, with filters by status, category and tag, search, and top, new and trending sorts.",
+    "keywords": [
+        "feedback",
+        "feature requests",
+        "ideas",
+        "vote",
+        "board"
+    ],
+    "textdomain": "ruvelo-feedback",
+    "attributes": {
+        "status": {
+            "type": "string",
+            "default": "open"
+        },
+        "category": {
+            "type": "string",
+            "default": ""
+        },
+        "sort": {
+            "type": "string",
+            "default": "top",
+            "enum": [
+                "top",
+                "new",
+                "trending"
+            ]
+        },
+        "perPage": {
+            "type": "number",
+            "default": 20
+        },
+        "showNav": {
+            "type": "boolean",
+            "default": true
+        },
+        "showHeading": {
+            "type": "boolean",
+            "default": true
+        },
+        "align": {
+            "type": "string",
+            "default": "wide"
+        }
+    },
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ],
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "inserter": true
+    },
+    "editorScript": "ruvelo-feedback-blocks",
+    "style": "ruvelo-feedback",
+    "viewScript": "ruvelo-feedback",
+    "render": "file:./render.php",
+    "styles": [
+        {
+            "name": "default",
+            "label": "Ruvelo",
+            "isDefault": true
+        },
+        {
+            "name": "theme",
+            "label": "Match theme"
+        },
+        {
+            "name": "compact",
+            "label": "Compact"
+        }
+    ]
+}

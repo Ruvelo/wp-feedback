@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "ruvelo/whats-new",
+    "version": "1.0.0",
+    "title": "What’s New",
+    "category": "widgets",
+    "icon": "bell",
+    "description": "A bell with the number of updates each visitor hasn’t seen, and the latest entries in a dropdown.",
+    "keywords": [
+        "changelog",
+        "notifications",
+        "bell",
+        "updates"
+    ],
+    "textdomain": "ruvelo-feedback",
+    "attributes": {
+        "label": {
+            "type": "string",
+            "default": ""
+        },
+        "limit": {
+            "type": "number",
+            "default": 5
+        }
+    },
+    "supports": {
+        "html": false,
+        "align": false,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "inserter": true
+    },
+    "editorScript": "ruvelo-feedback-blocks",
+    "style": "ruvelo-feedback",
+    "viewScript": "ruvelo-feedback",
+    "render": "file:./render.php",
+    "styles": [
+        {
+            "name": "default",
+            "label": "Ruvelo",
+            "isDefault": true
+        },
+        {
+            "name": "theme",
+            "label": "Match theme"
+        }
+    ],
+    "example": {}
+}

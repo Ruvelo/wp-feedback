@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "ruvelo/submit-request",
+    "version": "1.0.0",
+    "title": "Submit Request",
+    "category": "widgets",
+    "icon": "plus-alt",
+    "description": "The “Suggest a feature” form, showing similar requests while the title is typed.",
+    "keywords": [
+        "feedback",
+        "suggest",
+        "feature request",
+        "form"
+    ],
+    "textdomain": "ruvelo-feedback",
+    "attributes": {
+        "showNav": {
+            "type": "boolean",
+            "default": true
+        },
+        "align": {
+            "type": "string",
+            "default": "wide"
+        }
+    },
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ],
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "inserter": true
+    },
+    "editorScript": "ruvelo-feedback-blocks",
+    "style": "ruvelo-feedback",
+    "viewScript": "ruvelo-feedback",
+    "render": "file:./render.php",
+    "styles": [
+        {
+            "name": "default",
+            "label": "Ruvelo",
+            "isDefault": true
+        },
+        {
+            "name": "theme",
+            "label": "Match theme"
+        }
+    ]
+}

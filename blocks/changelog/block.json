@@ -1,0 +1,66 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "ruvelo/changelog",
+    "version": "1.0.0",
+    "title": "Changelog",
+    "category": "widgets",
+    "icon": "megaphone",
+    "description": "Your changelog entries, newest first, with labels and the requests they answer.",
+    "keywords": [
+        "changelog",
+        "release notes",
+        "updates",
+        "what's new"
+    ],
+    "textdomain": "ruvelo-feedback",
+    "attributes": {
+        "perPage": {
+            "type": "number",
+            "default": 10
+        },
+        "showNav": {
+            "type": "boolean",
+            "default": true
+        },
+        "showHeading": {
+            "type": "boolean",
+            "default": true
+        },
+        "align": {
+            "type": "string",
+            "default": "wide"
+        }
+    },
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ],
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "inserter": true
+    },
+    "editorScript": "ruvelo-feedback-blocks",
+    "style": "ruvelo-feedback",
+    "viewScript": "ruvelo-feedback",
+    "render": "file:./render.php",
+    "styles": [
+        {
+            "name": "default",
+            "label": "Ruvelo",
+            "isDefault": true
+        },
+        {
+            "name": "theme",
+            "label": "Match theme"
+        },
+        {
+            "name": "compact",
+            "label": "Compact"
+        }
+    ]
+}

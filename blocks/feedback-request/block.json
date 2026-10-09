@@ -1,0 +1,38 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "ruvelo/feedback-request",
+    "version": "1.0.0",
+    "title": "Feature Request",
+    "category": "widgets",
+    "icon": "lightbulb",
+    "description": "One request with its votes, history and comments. Used by the single request template.",
+    "keywords": [],
+    "textdomain": "ruvelo-feedback",
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "wide"
+        }
+    },
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ],
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "inserter": false
+    },
+    "editorScript": "ruvelo-feedback-blocks",
+    "style": "ruvelo-feedback",
+    "viewScript": "ruvelo-feedback",
+    "render": "file:./render.php",
+    "usesContext": [
+        "postId",
+        "postType"
+    ]
+}
