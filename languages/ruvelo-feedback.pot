@@ -1,0 +1,1909 @@
+# Copyright (C) 2026 Ruvelo
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ruvelo Feedback 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/Ruvelo/wp-feedback/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-09T06:00:30+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: ruvelo-feedback\n"
+
+#. Plugin Name of the plugin
+#: ruvelo-feedback.php
+msgid "Ruvelo Feedback"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: ruvelo-feedback.php
+msgid "https://ruvelo.github.io/wp-feedback/"
+msgstr ""
+
+#. Description of the plugin
+#: ruvelo-feedback.php
+msgid "A feedback board, public roadmap and changelog for your site. People suggest and vote, you ship, voters are told."
+msgstr ""
+
+#. Author of the plugin
+#: ruvelo-feedback.php
+msgid "Ruvelo"
+msgstr ""
+
+#. Author URI of the plugin
+#: ruvelo-feedback.php
+msgid "https://github.com/Ruvelo"
+msgstr ""
+
+#: src/Abilities.php:28
+#: src/Admin/Admin.php:334
+#: src/Blocks.php:90
+#: src/Blocks.php:127
+#: src/Frontend/Views.php:301
+#: src/PostTypes.php:33
+#: src/Setup.php:26
+#: templates/request.php:45
+msgid "Feedback"
+msgstr ""
+
+#: src/Abilities.php:29
+msgid "Feature requests, the roadmap and the changelog."
+msgstr ""
+
+#: src/Abilities.php:40
+msgid "List feature requests"
+msgstr ""
+
+#: src/Abilities.php:41
+msgid "Lists public feature requests from the feedback board, most voted first. Filter by status (under_review, planned, in_progress, shipped, closed, open for the first three, or all), category slug or tag slug."
+msgstr ""
+
+#: src/Abilities.php:61
+msgid "Search feature requests"
+msgstr ""
+
+#: src/Abilities.php:62
+msgid "Finds existing requests that match a phrase. Use it before submitting a request, to vote for an existing one instead of creating a duplicate."
+msgstr ""
+
+#: src/Abilities.php:80
+msgid "Get a feature request"
+msgstr ""
+
+#: src/Abilities.php:81
+msgid "Returns one public request with its votes, status and status history."
+msgstr ""
+
+#: src/Abilities.php:96
+msgid "Get the roadmap"
+msgstr ""
+
+#: src/Abilities.php:97
+msgid "Returns the public roadmap: what is planned, in progress and recently shipped, with vote counts."
+msgstr ""
+
+#: src/Abilities.php:121
+msgid "Get the changelog"
+msgstr ""
+
+#: src/Abilities.php:122
+msgid "Returns recent changelog entries (newest first) with their labels (new, improved, fixed) and the requests they shipped."
+msgstr ""
+
+#: src/Abilities.php:153
+msgid "Submit a feature request"
+msgstr ""
+
+#: src/Abilities.php:154
+msgid "Posts a new feature request as the current user. Search first: if a similar request exists, vote for it instead."
+msgstr ""
+
+#: src/Abilities.php:172
+msgid "Change a request’s status"
+msgstr ""
+
+#: src/Abilities.php:173
+msgid "Moves a request to another status (under_review, planned, in_progress, shipped, closed) with an optional public note. Its author and voters are emailed. Needs the ruvelo_manage_feedback capability."
+msgstr ""
+
+#: src/Abilities.php:250
+msgid "That request doesn’t exist, or isn’t public."
+msgstr ""
+
+#: src/Admin/Admin.php:60
+#: src/Admin/StatsPage.php:45
+#: templates/request.php:66
+msgid "Waiting for approval"
+msgstr ""
+
+#: src/Admin/Admin.php:62
+#: src/Admin/Admin.php:63
+#: src/Admin/SettingsPage.php:188
+#: src/Admin/SettingsPage.php:190
+msgid "Moderation"
+msgstr ""
+
+#: src/Admin/Admin.php:132
+#: src/Admin/StatsPage.php:66
+msgid "Votes"
+msgstr ""
+
+#: src/Admin/Admin.php:136
+#: src/Admin/Admin.php:370
+#: src/Admin/SettingsPage.php:235
+#: src/Admin/StatsPage.php:66
+#: templates/board.php:61
+#: templates/parts/manage.php:44
+#: templates/request.php:187
+msgid "Status"
+msgstr ""
+
+#: src/Admin/Admin.php:140
+msgid "Asked by"
+msgstr ""
+
+#: src/Admin/Admin.php:158
+#: templates/parts/card.php:34
+#: templates/request.php:69
+msgid "Pinned"
+msgstr ""
+
+#. translators: %s: request title
+#: src/Admin/Admin.php:163
+#, php-format
+msgid "Merged into “%s”"
+msgstr ""
+
+#: src/Admin/Admin.php:170
+msgid "guest"
+msgstr ""
+
+#: src/Admin/Admin.php:223
+msgid "Filter by status"
+msgstr ""
+
+#: src/Admin/Admin.php:224
+msgid "All statuses"
+msgstr ""
+
+#. translators: %s: status
+#: src/Admin/Admin.php:239
+#, php-format
+msgid "Mark as %s"
+msgstr ""
+
+#: src/Admin/Admin.php:241
+#: src/Admin/Admin.php:281
+msgid "Approve"
+msgstr ""
+
+#: src/Admin/Admin.php:292
+#: src/Frontend/Forms.php:191
+msgid "You can’t manage feedback on this site."
+msgstr ""
+
+#. translators: %s: number of requests
+#: src/Admin/Admin.php:308
+#, php-format
+msgid "%s request updated. Its author and voters will be emailed."
+msgid_plural "%s requests updated. Their authors and voters will be emailed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/Admin.php:319
+#: src/Admin/SettingsPage.php:153
+msgid "Feedback board"
+msgstr ""
+
+#: src/Admin/Admin.php:319
+#: src/Admin/SettingsPage.php:153
+#: src/Frontend/Views.php:302
+#: src/Setup.php:27
+#: templates/roadmap.php:30
+msgid "Roadmap"
+msgstr ""
+
+#: src/Admin/Admin.php:319
+msgid "Feedback form"
+msgstr ""
+
+#: src/Admin/Admin.php:335
+msgid "Status history"
+msgstr ""
+
+#: src/Admin/Admin.php:353
+msgid "vote"
+msgid_plural "votes"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: name, 2: email
+#: src/Admin/Admin.php:358
+#, php-format
+msgid "Asked by %1$s (%2$s), a guest."
+msgstr ""
+
+#. translators: %s: request title
+#: src/Admin/Admin.php:366
+#, php-format
+msgid "Merged into “%s”. Its page redirects there."
+msgstr ""
+
+#: src/Admin/Admin.php:378
+#: templates/parts/manage.php:50
+msgid "Public note"
+msgstr ""
+
+#: src/Admin/Admin.php:378
+#: templates/parts/manage.php:50
+#: templates/submit.php:62
+#: templates/submit.php:67
+msgid "(optional)"
+msgstr ""
+
+#: src/Admin/Admin.php:379
+msgid "Shown on the request and in the email"
+msgstr ""
+
+#: src/Admin/Admin.php:381
+#: templates/parts/manage.php:52
+msgid "Email the author and voters"
+msgstr ""
+
+#: src/Admin/Admin.php:382
+msgid "Pin to the top of the board"
+msgstr ""
+
+#: src/Admin/Admin.php:385
+msgid "Merge into"
+msgstr ""
+
+#: src/Admin/Admin.php:387
+msgid "Not a duplicate"
+msgstr ""
+
+#: src/Admin/Admin.php:392
+msgid "Votes and comments move over; nobody is counted twice."
+msgstr ""
+
+#: src/Admin/Admin.php:404
+msgid "No status changes yet."
+msgstr ""
+
+#: src/Admin/Admin.php:451
+msgid "Requests this ships"
+msgstr ""
+
+#: src/Admin/Admin.php:466
+msgid "When this entry is published, these requests are marked Shipped and their voters are emailed a link to it."
+msgstr ""
+
+#: src/Admin/Admin.php:468
+#: src/PostTypes.php:41
+#: templates/board.php:146
+msgid "No requests yet."
+msgstr ""
+
+#. translators: %s: number of votes
+#: src/Admin/Admin.php:485
+#: templates/parts/asked.php:35
+#: templates/parts/vote.php:21
+#: templates/roadmap.php:55
+#: assets/js/feedback.js:83
+#, php-format,js-format
+msgid "%s vote"
+msgid_plural "%s votes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/SettingsPage.php:30
+#: src/Admin/SettingsPage.php:127
+msgid "Feedback settings"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:30
+#: assets/js/blocks.js:61
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:89
+msgid "Only administrators can create pages here."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:107
+#: src/Settings.php:126
+msgid "Under review"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:108
+#: src/Settings.php:127
+msgid "Planned"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:109
+#: src/Settings.php:128
+msgid "In progress"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:110
+#: src/Settings.php:129
+msgid "Shipped"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:111
+#: src/Settings.php:130
+msgid "Closed"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:133
+msgid "Your feedback pages are ready."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:135
+msgid "The pages couldn’t be created. Check that you can publish pages, then try again."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:143
+msgid "Give your users a feedback portal"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:144
+msgid "Creates a Feedback page with the board, and Roadmap and Suggest a feature pages under it. The changelog lives at its own address. You can edit every page afterwards like any other."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:148
+msgid "Create the feedback pages"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:151
+msgid "Your feedback portal"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:153
+#: src/Setup.php:28
+#: templates/board.php:53
+#: templates/submit.php:30
+msgid "Suggest a feature"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:158
+#: src/Frontend/Templates.php:48
+#: src/Frontend/Views.php:303
+#: src/PostTypes.php:64
+#: src/PostTypes.php:66
+#: src/PostTypes.php:67
+#: src/PostTypes.php:77
+#: templates/entry.php:30
+msgid "Changelog"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:159
+msgid "Changelog RSS"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:161
+msgid "Add the “What’s New” block to your header to show people what changed since their last visit."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:169
+msgid "Who can take part"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:172
+#: src/Admin/SettingsPage.php:174
+msgid "Posting requests"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:175
+#: src/Admin/SettingsPage.php:183
+msgid "Signed-in users"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:176
+msgid "Anyone, with an email address"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:176
+msgid "Guests leave a name and email, so they can be told when it ships."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:180
+#: src/Admin/SettingsPage.php:182
+msgid "Voting"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:183
+msgid "One vote per account."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:184
+msgid "Anyone who confirms an email address"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:184
+msgid "Guests get a link by email; the vote counts once they click it. One vote per address."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:191
+msgid "Hold requests from guests"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:192
+msgid "Hold every new request"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:193
+msgid "Publish right away"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:194
+msgid "Held requests wait under Feedback → Moderation. Comments follow your Discussion settings."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:199
+msgid "Emails"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:202
+msgid "Close the loop"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:204
+msgid "Email authors and voters when a request changes status"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:205
+msgid "Sent in the background by WP-Cron, a batch at a time, never while someone waits for a page. Every email has an unsubscribe link."
+msgstr ""
+
+#. translators: %s: number of status changes
+#: src/Admin/SettingsPage.php:211
+#, php-format
+msgid "%s status change is waiting to be emailed."
+msgid_plural "%s status changes are waiting to be emailed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/SettingsPage.php:218
+msgid "Email about"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:220
+msgid "Statuses that send an email"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:227
+msgid "Emails per batch"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:228
+msgid "Per cron run, about a minute apart."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:232
+msgid "Statuses"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:233
+msgid "Rename a status or change its colour. Developers can add statuses with the ruvelo_feedback_statuses filter."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:235
+#: src/PostTypes.php:139
+#: assets/js/blocks.js:109
+msgid "Label"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:235
+msgid "Colour"
+msgstr ""
+
+#. translators: %s: status key
+#: src/Admin/SettingsPage.php:240
+#, php-format
+msgid "Label for %s"
+msgstr ""
+
+#. translators: %s: status key
+#: src/Admin/SettingsPage.php:242
+#, php-format
+msgid "Colour for %s"
+msgstr ""
+
+#. translators: %s: status key
+#: src/Admin/SettingsPage.php:243
+msgid "Grey"
+msgstr ""
+
+#. translators: %s: status key
+#: src/Admin/SettingsPage.php:243
+msgid "Ultramarine"
+msgstr ""
+
+#. translators: %s: status key
+#: src/Admin/SettingsPage.php:243
+msgid "Lilac"
+msgstr ""
+
+#. translators: %s: status key
+#: src/Admin/SettingsPage.php:243
+msgid "Amber"
+msgstr ""
+
+#. translators: %s: status key
+#: src/Admin/SettingsPage.php:243
+msgid "Green"
+msgstr ""
+
+#. translators: %s: status key
+#: src/Admin/SettingsPage.php:243
+msgid "Red"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:253
+msgid "Look"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:256
+msgid "Product name"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:257
+msgid "Used in emails and the changelog. Leave empty to use the site title."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:260
+#: src/Admin/SettingsPage.php:262
+msgid "Colour scheme"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:263
+msgid "Light"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:263
+msgid "Best with light themes, like most."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:264
+msgid "Follow each visitor’s system setting"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:264
+msgid "For themes that switch to dark mode too."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:265
+msgid "Dark"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:269
+#: assets/js/blocks.js:96
+msgid "Requests per page"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:273
+msgid "Similar requests to suggest"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:278
+msgid "When you delete the plugin"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:281
+msgid "Your data"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:283
+msgid "Also delete every request, vote, changelog entry and setting"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:284
+msgid "Off by default: deleting the plugin keeps your content, so you can reinstall it later. Scheduled emails are always cleared."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:289
+msgid "Save changes"
+msgstr ""
+
+#: src/Admin/StatsPage.php:27
+#: src/Admin/StatsPage.php:37
+msgid "Feedback stats"
+msgstr ""
+
+#: src/Admin/StatsPage.php:27
+msgid "Stats"
+msgstr ""
+
+#: src/Admin/StatsPage.php:42
+msgid "Open requests"
+msgstr ""
+
+#: src/Admin/StatsPage.php:43
+msgid "Votes in the last 30 days"
+msgstr ""
+
+#: src/Admin/StatsPage.php:44
+msgid "Shipped in the last 90 days"
+msgstr ""
+
+#: src/Admin/StatsPage.php:52
+msgid "Votes per week"
+msgstr ""
+
+#: src/Admin/StatsPage.php:53
+msgid "Votes per week for the last 12 weeks"
+msgstr ""
+
+#: src/Admin/StatsPage.php:64
+msgid "Top open requests"
+msgstr ""
+
+#: src/Admin/StatsPage.php:66
+#: src/Privacy.php:53
+msgid "Request"
+msgstr ""
+
+#: src/Admin/StatsPage.php:69
+msgid "No open requests yet."
+msgstr ""
+
+#: src/Admin/StatsPage.php:82
+msgid "Requests by status"
+msgstr ""
+
+#: src/Blocks.php:93
+msgid "Feedback board page"
+msgstr ""
+
+#: src/Blocks.php:94
+msgid "The board, with tabs to the roadmap and changelog."
+msgstr ""
+
+#: src/Blocks.php:101
+msgid "Roadmap page"
+msgstr ""
+
+#: src/Blocks.php:107
+msgid "Changelog page"
+msgstr ""
+
+#: src/Blocks.php:113
+msgid "Roadmap and latest updates"
+msgstr ""
+
+#: src/Blocks.php:114
+msgid "A compact roadmap next to a short changelog: good on a home or product page."
+msgstr ""
+
+#: src/Blocks.php:117
+msgid "What we’re working on"
+msgstr ""
+
+#: src/Blocks.php:119
+msgid "Recently shipped"
+msgstr ""
+
+#: src/Blocks.php:123
+msgid "Header link with What’s new"
+msgstr ""
+
+#: src/Blocks.php:124
+msgid "A “Feedback” link and the What’s new bell, to drop into a header."
+msgstr ""
+
+#: src/Changelog.php:26
+msgid "Give the entry a title."
+msgstr ""
+
+#: src/Frontend/Comments.php:32
+msgid "Comments are closed."
+msgstr ""
+
+#: src/Frontend/Comments.php:37
+msgid "No comments yet. Add a use case or an example: it helps the team understand what you need."
+msgstr ""
+
+#: src/Frontend/Comments.php:77
+msgid "Add a comment"
+msgstr ""
+
+#. translators: %s: name of the person being replied to
+#: src/Frontend/Comments.php:79
+#, php-format
+msgid "Reply to %s"
+msgstr ""
+
+#: src/Frontend/Comments.php:82
+#: templates/submit.php:99
+msgid "Cancel"
+msgstr ""
+
+#: src/Frontend/Comments.php:83
+msgid "Post comment"
+msgstr ""
+
+#: src/Frontend/Comments.php:85
+msgid "Your comment"
+msgstr ""
+
+#: src/Frontend/Comments.php:85
+msgid "Add a use case, an example, or a question…"
+msgstr ""
+
+#. translators: %s: display name
+#: src/Frontend/Comments.php:88
+#, php-format
+msgid "Commenting as %s"
+msgstr ""
+
+#: src/Frontend/Comments.php:110
+msgid "Team"
+msgstr ""
+
+#: src/Frontend/Comments.php:115
+msgid "Your comment is waiting for moderation."
+msgstr ""
+
+#: src/Frontend/Comments.php:123
+msgid "Reply"
+msgstr ""
+
+#: src/Frontend/Comments.php:125
+msgid "Edit"
+msgstr ""
+
+#. translators: %s: site name
+#: src/Frontend/Forms.php:101
+#, php-format
+msgid "[%s] Confirm your vote"
+msgstr ""
+
+#. translators: %s: first name
+#: src/Frontend/Forms.php:103
+#: src/Notifications.php:298
+msgid "Hi,"
+msgstr ""
+
+#. translators: %s: request title
+#: src/Frontend/Forms.php:106
+#, php-format
+msgid "Click this link to confirm your vote for “%s”:"
+msgstr ""
+
+#: src/Frontend/Forms.php:110
+msgid "We’ll also email you when its status changes. If you didn’t ask for this, ignore this email: nothing will be counted."
+msgstr ""
+
+#: src/Frontend/Forms.php:244
+msgid "That unsubscribe link didn’t work. Use the link from your most recent email."
+msgstr ""
+
+#: src/Frontend/Forms.php:244
+#: src/Frontend/Forms.php:263
+#: src/Frontend/Forms.php:264
+msgid "Unsubscribe"
+msgstr ""
+
+#: src/Frontend/Forms.php:252
+msgid "You’re unsubscribed"
+msgstr ""
+
+#: src/Frontend/Forms.php:252
+msgid "You won’t get any more feedback emails from this site."
+msgstr ""
+
+#: src/Frontend/Forms.php:252
+msgid "You won’t get more emails about this request."
+msgstr ""
+
+#: src/Frontend/Forms.php:253
+msgid "Unsubscribed"
+msgstr ""
+
+#: src/Frontend/Forms.php:258
+msgid "Stop these emails?"
+msgstr ""
+
+#. translators: %s: request title
+#: src/Frontend/Forms.php:260
+#, php-format
+msgid "You get emails when “%s” changes status."
+msgstr ""
+
+#: src/Frontend/Forms.php:261
+msgid "Stop emails about this request"
+msgstr ""
+
+#: src/Frontend/Forms.php:262
+msgid "Stop all feedback emails from this site"
+msgstr ""
+
+#: src/Frontend/Templates.php:38
+msgid "Single feature request"
+msgstr ""
+
+#: src/Frontend/Templates.php:39
+msgid "One request from the feedback board, with votes, history and comments."
+msgstr ""
+
+#: src/Frontend/Templates.php:43
+msgid "Single changelog entry"
+msgstr ""
+
+#: src/Frontend/Templates.php:44
+msgid "One changelog entry and the requests it answers."
+msgstr ""
+
+#: src/Frontend/Templates.php:49
+msgid "Every changelog entry, newest first."
+msgstr ""
+
+#: src/Frontend/Templates.php:53
+#: templates/parts/nav.php:14
+msgid "Feedback portal"
+msgstr ""
+
+#: src/Frontend/Templates.php:54
+msgid "A wide page without a title, for the feedback board, roadmap and form."
+msgstr ""
+
+#: src/Frontend/Views.php:288
+#: templates/changelog.php:29
+#: assets/js/blocks.js:110
+msgid "What’s new"
+msgstr ""
+
+#: src/Frontend/Views.php:333
+msgid "Thanks! Your request is on the board, with your vote."
+msgstr ""
+
+#: src/Frontend/Views.php:334
+msgid "Thanks! Your request will appear once the team has looked at it."
+msgstr ""
+
+#: src/Frontend/Views.php:335
+#: assets/js/feedback.js:88
+msgid "Your vote is in."
+msgstr ""
+
+#: src/Frontend/Views.php:336
+#: assets/js/feedback.js:88
+msgid "Your vote was taken back."
+msgstr ""
+
+#: src/Frontend/Views.php:337
+msgid "Almost there: check your inbox and click the link to confirm your vote."
+msgstr ""
+
+#: src/Frontend/Views.php:338
+msgid "Thanks, your vote is confirmed."
+msgstr ""
+
+#: src/Frontend/Views.php:339
+msgid "Saved."
+msgstr ""
+
+#: src/Frontend/Views.php:340
+msgid "Merged. Votes and comments moved over."
+msgstr ""
+
+#: src/Frontend/Views.php:341
+msgid "Sign in first, then try again."
+msgstr ""
+
+#: src/Frontend/Views.php:342
+#: src/Rest/Controller.php:249
+#: src/Rest/Controller.php:278
+msgid "That’s a lot in a short time. Wait a minute and try again."
+msgstr ""
+
+#: src/Frontend/Views.php:343
+#: src/Requests.php:120
+#: src/Requests.php:144
+msgid "Voting is closed for this request."
+msgstr ""
+
+#: src/Frontend/Views.php:344
+msgid "The form expired. Reload the page and try again."
+msgstr ""
+
+#: src/Frontend/Views.php:345
+msgid "Something in the form wasn’t right. Check it and try again."
+msgstr ""
+
+#: src/Frontend/Views.php:346
+#: src/Requests.php:34
+msgid "Give your request a title of at least 3 characters."
+msgstr ""
+
+#: src/Frontend/Views.php:347
+msgid "Enter a valid email address."
+msgstr ""
+
+#: src/Frontend/Views.php:348
+msgid "That link didn’t work. It may be old: try voting again."
+msgstr ""
+
+#: src/Frontend/Views.php:385
+msgid "Pages"
+msgstr ""
+
+#. translators: %s: request title
+#: src/Notifications.php:243
+#, php-format
+msgid "Shipped: %s"
+msgstr ""
+
+#. translators: %s: changelog entry title
+#: src/Notifications.php:245
+#, php-format
+msgid "Something you asked for is live. Read about it in “%s”."
+msgstr ""
+
+#. translators: 1: status, 2: request title
+#: src/Notifications.php:249
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#. translators: 1: site or product name, 2: headline
+#: src/Notifications.php:256
+#, php-format
+msgid "[%1$s] %2$s"
+msgstr ""
+
+#: src/Notifications.php:281
+msgid "It’s on the roadmap. We’ll let you know when work starts."
+msgstr ""
+
+#: src/Notifications.php:282
+msgid "We’re building it now."
+msgstr ""
+
+#: src/Notifications.php:283
+msgid "It’s live. Thanks for asking for it."
+msgstr ""
+
+#: src/Notifications.php:284
+msgid "We’ve decided not to do this for now. Thanks for taking the time to ask."
+msgstr ""
+
+#: src/Notifications.php:285
+msgid "Its status changed."
+msgstr ""
+
+#. translators: %s: first name
+#: src/Notifications.php:298
+#, php-format
+msgid "Hi %s,"
+msgstr ""
+
+#: src/Notifications.php:301
+msgid "There’s news about the request you posted:"
+msgstr ""
+
+#: src/Notifications.php:302
+msgid "There’s news about a request you voted for:"
+msgstr ""
+
+#. translators: %s: site name
+#: src/Notifications.php:312
+#, php-format
+msgid "You’re getting this because you asked for or voted on this at %s."
+msgstr ""
+
+#. translators: %s: unsubscribe link
+#: src/Notifications.php:314
+#, php-format
+msgid "Stop these emails: %s"
+msgstr ""
+
+#: src/PostTypes.php:31
+msgid "Feature requests"
+msgstr ""
+
+#: src/PostTypes.php:32
+msgid "Feature request"
+msgstr ""
+
+#: src/PostTypes.php:34
+msgid "Requests"
+msgstr ""
+
+#: src/PostTypes.php:35
+#: src/PostTypes.php:36
+msgid "Add request"
+msgstr ""
+
+#: src/PostTypes.php:37
+msgid "Edit request"
+msgstr ""
+
+#: src/PostTypes.php:38
+msgid "New request"
+msgstr ""
+
+#: src/PostTypes.php:39
+msgid "View request"
+msgstr ""
+
+#: src/PostTypes.php:40
+#: templates/board.php:99
+msgid "Search requests"
+msgstr ""
+
+#: src/PostTypes.php:42
+msgid "No requests in the trash."
+msgstr ""
+
+#: src/PostTypes.php:43
+msgid "Request published."
+msgstr ""
+
+#: src/PostTypes.php:44
+msgid "Request updated."
+msgstr ""
+
+#: src/PostTypes.php:46
+msgid "Ideas and feature requests from your users."
+msgstr ""
+
+#: src/PostTypes.php:65
+msgid "Changelog entry"
+msgstr ""
+
+#: src/PostTypes.php:68
+#: templates/changelog.php:40
+msgid "Write an update"
+msgstr ""
+
+#: src/PostTypes.php:69
+msgid "Write a changelog entry"
+msgstr ""
+
+#: src/PostTypes.php:70
+msgid "Edit changelog entry"
+msgstr ""
+
+#: src/PostTypes.php:71
+msgid "New changelog entry"
+msgstr ""
+
+#: src/PostTypes.php:72
+msgid "View entry"
+msgstr ""
+
+#: src/PostTypes.php:73
+msgid "View changelog"
+msgstr ""
+
+#: src/PostTypes.php:74
+msgid "Search the changelog"
+msgstr ""
+
+#: src/PostTypes.php:75
+msgid "Nothing in the changelog yet."
+msgstr ""
+
+#: src/PostTypes.php:76
+msgid "No entries in the trash."
+msgstr ""
+
+#: src/PostTypes.php:79
+msgid "New features, improvements and fixes."
+msgstr ""
+
+#: src/PostTypes.php:102
+msgid "Categories"
+msgstr ""
+
+#: src/PostTypes.php:103
+#: templates/board.php:73
+#: templates/request.php:192
+#: templates/submit.php:67
+msgid "Category"
+msgstr ""
+
+#: src/PostTypes.php:104
+msgid "Add a category"
+msgstr ""
+
+#: src/PostTypes.php:105
+msgid "Search categories"
+msgstr ""
+
+#: src/PostTypes.php:106
+msgid "No categories yet."
+msgstr ""
+
+#: src/PostTypes.php:120
+#: templates/board.php:85
+#: templates/request.php:198
+msgid "Tags"
+msgstr ""
+
+#: src/PostTypes.php:121
+msgid "Tag"
+msgstr ""
+
+#: src/PostTypes.php:122
+msgid "Add a tag"
+msgstr ""
+
+#: src/PostTypes.php:123
+msgid "Search tags"
+msgstr ""
+
+#: src/PostTypes.php:124
+msgid "No tags yet."
+msgstr ""
+
+#: src/PostTypes.php:138
+msgid "Labels"
+msgstr ""
+
+#: src/PostTypes.php:140
+msgid "Add a label"
+msgstr ""
+
+#: src/PostTypes.php:141
+msgid "Search labels"
+msgstr ""
+
+#: src/PostTypes.php:142
+msgid "No labels yet."
+msgstr ""
+
+#: src/PostTypes.php:155
+msgctxt "request status"
+msgid "Merged"
+msgstr ""
+
+#. translators: %s: number of merged requests
+#: src/PostTypes.php:163
+#, php-format
+msgid "Merged <span class=\"count\">(%s)</span>"
+msgid_plural "Merged <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Privacy.php:25
+#: src/Privacy.php:36
+msgid "Feedback votes and requests"
+msgstr ""
+
+#: src/Privacy.php:50
+msgid "Feedback votes"
+msgstr ""
+
+#: src/Privacy.php:54
+msgid "Voted on"
+msgstr ""
+
+#: src/Privacy.php:61
+msgid "Feedback requests"
+msgstr ""
+
+#: src/Privacy.php:64
+#: templates/submit.php:46
+msgid "Title"
+msgstr ""
+
+#: src/Privacy.php:65
+msgid "Name given"
+msgstr ""
+
+#: src/Privacy.php:91
+#: src/Requests.php:395
+msgid "A guest"
+msgstr ""
+
+#: src/Privacy.php:135
+msgid "When you vote for or post a feature request, we store which request you voted for and when. If you vote or post without an account, we store the email address you give us, to confirm your vote and to tell you when the request’s status changes. Every such email has an unsubscribe link. Nothing is shared with anyone outside this site."
+msgstr ""
+
+#: src/Requests.php:41
+msgid "Enter a valid email address so we can tell you when it ships."
+msgstr ""
+
+#: src/Requests.php:117
+#: src/Rest/Controller.php:392
+msgid "That request doesn’t exist, or isn’t public yet."
+msgstr ""
+
+#: src/Requests.php:183
+#: src/Requests.php:255
+#: src/Rest/Controller.php:317
+#: src/Rest/Controller.php:328
+#: src/Rest/Controller.php:395
+msgid "That request doesn’t exist."
+msgstr ""
+
+#: src/Requests.php:186
+msgid "That isn’t one of the statuses. Pick one from the list."
+msgstr ""
+
+#: src/Requests.php:250
+msgid "A request can’t be merged into itself."
+msgstr ""
+
+#: src/Requests.php:258
+msgid "That request was itself merged. Merge into the request it points to."
+msgstr ""
+
+#: src/Requests.php:261
+msgid "This request was already merged."
+msgstr ""
+
+#: src/Rest/Controller.php:164
+msgid "Sign in to suggest a feature."
+msgstr ""
+
+#: src/Rest/Controller.php:173
+msgid "Sign in to vote."
+msgstr ""
+
+#: src/Rest/Controller.php:176
+msgid "You can’t vote on this site."
+msgstr ""
+
+#: src/Rest/Controller.php:185
+msgid "Only the team can do that."
+msgstr ""
+
+#: src/Settings.php:214
+#: templates/board.php:35
+#: templates/changelog.php:78
+#: assets/js/blocks.js:89
+msgid "New"
+msgstr ""
+
+#: src/Settings.php:215
+msgid "Improved"
+msgstr ""
+
+#: src/Settings.php:216
+msgid "Fixed"
+msgstr ""
+
+#. translators: %s: a human time difference such as "3 days"
+#: src/Support/Html.php:92
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: templates/board.php:34
+#: assets/js/blocks.js:88
+msgid "Top"
+msgstr ""
+
+#: templates/board.php:36
+#: assets/js/blocks.js:90
+msgid "Trending"
+msgstr ""
+
+#: templates/board.php:49
+msgid "Tell us what to build next"
+msgstr ""
+
+#: templates/board.php:50
+msgid "Search for your idea and vote for it, or suggest something new. We read every request."
+msgstr ""
+
+#: templates/board.php:59
+msgid "Filters"
+msgstr ""
+
+#: templates/board.php:63
+msgid "Open"
+msgstr ""
+
+#: templates/board.php:67
+#: templates/changelog.php:48
+msgid "Everything"
+msgstr ""
+
+#: templates/board.php:75
+msgid "All categories"
+msgstr ""
+
+#: templates/board.php:100
+msgid "Search requests…"
+msgstr ""
+
+#: templates/board.php:115
+msgid "Sort"
+msgstr ""
+
+#. translators: 1: number of requests, 2: search text
+#: templates/board.php:128
+#, php-format
+msgid "%1$s request matching “%2$s”"
+msgid_plural "%1$s requests matching “%2$s”"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: number of requests
+#: templates/board.php:131
+#, php-format
+msgid "%s request"
+msgid_plural "%s requests"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/board.php:134
+msgid "Clear filters"
+msgstr ""
+
+#: templates/board.php:141
+msgid "No requests match."
+msgstr ""
+
+#: templates/board.php:143
+msgid "Can’t find it?"
+msgstr ""
+
+#: templates/board.php:143
+msgid "Suggest it"
+msgstr ""
+
+#: templates/board.php:148
+msgid "Suggest the first one"
+msgstr ""
+
+#. translators: %s: product or site name
+#: templates/changelog.php:33
+#, php-format
+msgid "New features, improvements and fixes in %s, newest first."
+msgstr ""
+
+#: templates/changelog.php:38
+msgid "RSS"
+msgstr ""
+
+#: templates/changelog.php:47
+msgid "Filter by label"
+msgstr ""
+
+#. translators: %s: number of entries
+#: templates/changelog.php:60
+#, php-format
+msgid "%s entry not live yet:"
+msgid_plural "%s entries not live yet:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/changelog.php:62
+msgid "(no title)"
+msgstr ""
+
+#: templates/changelog.php:69
+#: templates/roadmap.php:45
+msgid "Nothing here yet."
+msgstr ""
+
+#: templates/changelog.php:69
+msgid "Updates will show up here as they ship."
+msgstr ""
+
+#: templates/entry.php:29
+#: templates/request.php:43
+msgid "Breadcrumbs"
+msgstr ""
+
+#: templates/entry.php:43
+msgid "More updates"
+msgstr ""
+
+#: templates/entry.php:45
+msgid "Older"
+msgstr ""
+
+#: templates/entry.php:48
+msgid "Newer"
+msgstr ""
+
+#: templates/parts/asked.php:22
+msgid "Requests this answers"
+msgstr ""
+
+#. translators: %s: number of votes
+#: templates/parts/asked.php:26
+#, php-format
+msgid "You asked for this: %s vote"
+msgid_plural "You asked for this: %s votes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/parts/card.php:39
+msgid "comment"
+msgid_plural "comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/parts/manage.php:35
+msgid "Manage"
+msgstr ""
+
+#: templates/parts/manage.php:39
+msgid "Approve and publish"
+msgstr ""
+
+#: templates/parts/manage.php:53
+msgid "Update status"
+msgstr ""
+
+#: templates/parts/manage.php:56
+msgid "Pin, merge or edit"
+msgstr ""
+
+#: templates/parts/manage.php:60
+msgid "Unpin"
+msgstr ""
+
+#: templates/parts/manage.php:60
+msgid "Pin to the top"
+msgstr ""
+
+#: templates/parts/manage.php:65
+msgid "Merge this duplicate into"
+msgstr ""
+
+#: templates/parts/manage.php:67
+msgid "Choose a request…"
+msgstr ""
+
+#: templates/parts/manage.php:72
+msgid "Votes and comments move over. Nobody is counted twice."
+msgstr ""
+
+#: templates/parts/manage.php:73
+msgid "Merge"
+msgstr ""
+
+#: templates/parts/manage.php:78
+msgid "Edit in the admin"
+msgstr ""
+
+#: templates/parts/vote.php:26
+msgid "voting is closed"
+msgstr ""
+
+#. translators: 1: request title, 2: "12 votes"
+#: templates/parts/vote.php:36
+#: assets/js/feedback.js:86
+#, php-format,js-format
+msgid "Remove your vote for “%1$s”, %2$s"
+msgstr ""
+
+#. translators: 1: request title, 2: "12 votes"
+#: templates/parts/vote.php:36
+#: assets/js/feedback.js:86
+#, php-format,js-format
+msgid "Vote for “%1$s”, %2$s"
+msgstr ""
+
+#. translators: 1: request title, 2: "12 votes"
+#: templates/parts/vote.php:42
+#, php-format
+msgid "Vote for “%1$s” with your email, %2$s so far"
+msgstr ""
+
+#. translators: %s: "12 votes"
+#: templates/parts/vote.php:47
+#, php-format
+msgid "Sign in to vote. %s so far"
+msgstr ""
+
+#. translators: %d: request number
+#: templates/request.php:53
+#, php-format
+msgid "Request #%d"
+msgstr ""
+
+#. translators: 1: author name, 2: "3 days ago"
+#: templates/request.php:79
+#, php-format
+msgid "%1$s asked %2$s"
+msgstr ""
+
+#. translators: %s: date
+#: templates/request.php:103
+#, php-format
+msgid "Shipped on %s."
+msgstr ""
+
+#: templates/request.php:104
+msgid "Shipped."
+msgstr ""
+
+#: templates/request.php:109
+msgid "Read about it in the changelog:"
+msgstr ""
+
+#: templates/request.php:111
+msgid "Thanks to everyone who asked for it."
+msgstr ""
+
+#: templates/request.php:120
+msgid "Latest update from the team"
+msgstr ""
+
+#: templates/request.php:125
+msgid "posted an update"
+msgstr ""
+
+#: templates/request.php:127
+msgid "marked this"
+msgstr ""
+
+#: templates/request.php:138
+msgid "Also asked as"
+msgstr ""
+
+#: templates/request.php:138
+msgid "merged here, with their votes"
+msgstr ""
+
+#: templates/request.php:151
+msgid "Comments"
+msgstr ""
+
+#: templates/request.php:160
+msgid "Voters"
+msgstr ""
+
+#: templates/request.php:167
+msgid "Guest"
+msgstr ""
+
+#. translators: %s: number of votes
+#: templates/request.php:176
+#, php-format
+msgid "<strong>%s</strong> vote, including yours"
+msgid_plural "<strong>%s</strong> votes, including yours"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: number of votes
+#: templates/request.php:179
+#, php-format
+msgid "<strong>%s</strong> vote"
+msgid_plural "<strong>%s</strong> votes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/request.php:207
+msgid "Vote with your email"
+msgstr ""
+
+#: templates/request.php:208
+msgid "We’ll send you a link to confirm, and tell you when this ships."
+msgstr ""
+
+#: templates/request.php:212
+#: templates/submit.php:83
+msgid "Email"
+msgstr ""
+
+#: templates/request.php:214
+#: templates/submit.php:90
+msgid "Website"
+msgstr ""
+
+#: templates/request.php:215
+msgid "Send me the link"
+msgstr ""
+
+#: templates/request.php:221
+msgid "History"
+msgstr ""
+
+#: templates/request.php:227
+msgid "Update"
+msgstr ""
+
+#: templates/request.php:234
+msgid "Posted"
+msgstr ""
+
+#: templates/roadmap.php:31
+msgid "What we’re planning, what we’re building now, and what just shipped. Vote on the board to move things up."
+msgstr ""
+
+#: templates/roadmap.php:34
+msgid "Browse all requests"
+msgstr ""
+
+#. translators: %s: number of votes
+#: templates/roadmap.php:55
+msgid "including yours"
+msgstr ""
+
+#: templates/roadmap.php:62
+msgid "In"
+msgstr ""
+
+#: templates/submit.php:31
+msgid "Tell us what you’re trying to do and what gets in the way. Others can vote for it, and you’ll hear when it ships."
+msgstr ""
+
+#: templates/submit.php:37
+msgid "Sign in"
+msgstr ""
+
+#: templates/submit.php:37
+msgid "to suggest a feature. You can browse and read everything without an account."
+msgstr ""
+
+#: templates/submit.php:47
+msgid "A short summary, like “Export reports to CSV”"
+msgstr ""
+
+#: templates/submit.php:52
+#: assets/js/feedback.js:123
+msgid "Is it one of these? Vote for it instead."
+msgstr ""
+
+#: templates/submit.php:62
+msgid "Details"
+msgstr ""
+
+#: templates/submit.php:64
+msgid "What would it let you do? Lines starting with “- ” become a list, and **bold** works."
+msgstr ""
+
+#: templates/submit.php:69
+msgid "Not sure"
+msgstr ""
+
+#: templates/submit.php:79
+msgid "Your name"
+msgstr ""
+
+#: templates/submit.php:87
+msgid "Only to tell you when it ships. Never shown, never shared. New requests from guests are checked before they appear."
+msgstr ""
+
+#: templates/submit.php:93
+msgid "None of these: post my request"
+msgstr ""
+
+#: templates/submit.php:97
+msgid "Post request"
+msgstr ""
+
+#. translators: 1: "What's new", 2: number of unread updates
+#: templates/whats-new.php:28
+#, php-format
+msgid "%1$s, %2$s new update"
+msgid_plural "%1$s, %2$s new updates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/whats-new.php:39
+msgid "See all"
+msgstr ""
+
+#: templates/whats-new.php:42
+msgid "Nothing yet. Updates will show up here."
+msgstr ""
+
+#: templates/whats-new.php:50
+msgid "New:"
+msgstr ""
+
+#: templates/whats-new.php:64
+msgid "Read the changelog"
+msgstr ""
+
+#: assets/js/blocks.js:37
+msgid "Show the portal tabs"
+msgstr ""
+
+#: assets/js/blocks.js:38
+msgid "Feedback, Roadmap and Changelog, once their pages exist."
+msgstr ""
+
+#: assets/js/blocks.js:47
+msgid "Show the heading"
+msgstr ""
+
+#: assets/js/blocks.js:85
+msgid "Sort by default"
+msgstr ""
+
+#: assets/js/blocks.js:100
+msgid "Requests per column"
+msgstr ""
+
+#: assets/js/blocks.js:103
+msgid "Entries per page"
+msgstr ""
+
+#: assets/js/blocks.js:116
+msgid "Entries in the dropdown"
+msgstr ""
+
+#: blocks/changelog-entry/block.json
+msgctxt "block title"
+msgid "Changelog Entry"
+msgstr ""
+
+#: blocks/changelog-entry/block.json
+msgctxt "block description"
+msgid "One changelog entry. Used by the single entry template."
+msgstr ""
+
+#: blocks/changelog/block.json
+msgctxt "block title"
+msgid "Changelog"
+msgstr ""
+
+#: blocks/changelog/block.json
+msgctxt "block description"
+msgid "Your changelog entries, newest first, with labels and the requests they answer."
+msgstr ""
+
+#: blocks/changelog/block.json
+#: blocks/whats-new/block.json
+msgctxt "block keyword"
+msgid "changelog"
+msgstr ""
+
+#: blocks/changelog/block.json
+msgctxt "block keyword"
+msgid "release notes"
+msgstr ""
+
+#: blocks/changelog/block.json
+#: blocks/whats-new/block.json
+msgctxt "block keyword"
+msgid "updates"
+msgstr ""
+
+#: blocks/changelog/block.json
+msgctxt "block keyword"
+msgid "what's new"
+msgstr ""
+
+#: blocks/changelog/block.json
+#: blocks/feedback-board/block.json
+#: blocks/roadmap/block.json
+#: blocks/submit-request/block.json
+#: blocks/whats-new/block.json
+msgctxt "block style label"
+msgid "Ruvelo"
+msgstr ""
+
+#: blocks/changelog/block.json
+#: blocks/feedback-board/block.json
+#: blocks/roadmap/block.json
+#: blocks/submit-request/block.json
+#: blocks/whats-new/block.json
+msgctxt "block style label"
+msgid "Match theme"
+msgstr ""
+
+#: blocks/changelog/block.json
+#: blocks/feedback-board/block.json
+msgctxt "block style label"
+msgid "Compact"
+msgstr ""
+
+#: blocks/feedback-board/block.json
+msgctxt "block title"
+msgid "Feedback Board"
+msgstr ""
+
+#: blocks/feedback-board/block.json
+msgctxt "block description"
+msgid "Requests people can vote on, with filters by status, category and tag, search, and top, new and trending sorts."
+msgstr ""
+
+#: blocks/feedback-board/block.json
+#: blocks/roadmap/block.json
+#: blocks/submit-request/block.json
+msgctxt "block keyword"
+msgid "feedback"
+msgstr ""
+
+#: blocks/feedback-board/block.json
+msgctxt "block keyword"
+msgid "feature requests"
+msgstr ""
+
+#: blocks/feedback-board/block.json
+msgctxt "block keyword"
+msgid "ideas"
+msgstr ""
+
+#: blocks/feedback-board/block.json
+msgctxt "block keyword"
+msgid "vote"
+msgstr ""
+
+#: blocks/feedback-board/block.json
+msgctxt "block keyword"
+msgid "board"
+msgstr ""
+
+#: blocks/feedback-request/block.json
+msgctxt "block title"
+msgid "Feature Request"
+msgstr ""
+
+#: blocks/feedback-request/block.json
+msgctxt "block description"
+msgid "One request with its votes, history and comments. Used by the single request template."
+msgstr ""
+
+#: blocks/roadmap/block.json
+msgctxt "block title"
+msgid "Roadmap"
+msgstr ""
+
+#: blocks/roadmap/block.json
+msgctxt "block description"
+msgid "Planned, in progress and shipped requests, as columns with their votes."
+msgstr ""
+
+#: blocks/roadmap/block.json
+msgctxt "block keyword"
+msgid "roadmap"
+msgstr ""
+
+#: blocks/roadmap/block.json
+msgctxt "block keyword"
+msgid "planned"
+msgstr ""
+
+#: blocks/submit-request/block.json
+msgctxt "block title"
+msgid "Submit Request"
+msgstr ""
+
+#: blocks/submit-request/block.json
+msgctxt "block description"
+msgid "The “Suggest a feature” form, showing similar requests while the title is typed."
+msgstr ""
+
+#: blocks/submit-request/block.json
+msgctxt "block keyword"
+msgid "suggest"
+msgstr ""
+
+#: blocks/submit-request/block.json
+msgctxt "block keyword"
+msgid "feature request"
+msgstr ""
+
+#: blocks/submit-request/block.json
+msgctxt "block keyword"
+msgid "form"
+msgstr ""
+
+#: blocks/whats-new/block.json
+msgctxt "block title"
+msgid "What’s New"
+msgstr ""
+
+#: blocks/whats-new/block.json
+msgctxt "block description"
+msgid "A bell with the number of updates each visitor hasn’t seen, and the latest entries in a dropdown."
+msgstr ""
+
+#: blocks/whats-new/block.json
+msgctxt "block keyword"
+msgid "notifications"
+msgstr ""
+
+#: blocks/whats-new/block.json
+msgctxt "block keyword"
+msgid "bell"
+msgstr ""
