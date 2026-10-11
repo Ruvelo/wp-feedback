@@ -23,7 +23,7 @@
 **A free feedback board, public roadmap and changelog for WordPress.** Your users ask for things and vote, you plan and build, and when it ships everyone who asked is told: by email, and in a "What's new" bell on your site. The loop that Canny, Featurebase and Beamer sell as a subscription, as one plugin that keeps everything in your own WordPress.
 
 ```
-wp plugin install ruvelo-feedback --activate
+wp plugin install https://github.com/Ruvelo/wp-feedback/releases/latest/download/ruvelo-feedback.zip --activate
 ```
 
 Then Feedback → Settings → **Create the feedback pages**. Or click around [Halyard's portal in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/Ruvelo/wp-feedback/main/blueprint.json) first: it runs in your browser.
@@ -112,7 +112,7 @@ Then Feedback → Settings → **Create the feedback pages**. Or click around [H
 
 ## Getting started
 
-**1. Install** from Plugins → Add New, with WP-CLI as above, or with Composer (`composer require ruvelo/wp-feedback`, installed by `composer/installers` as a WordPress plugin).
+**1. Install** by uploading [ruvelo-feedback.zip](https://github.com/Ruvelo/wp-feedback/releases/latest/download/ruvelo-feedback.zip) in Plugins → Add New → Upload Plugin, with WP-CLI as above, or with Composer (`composer require ruvelo/wp-feedback`, installed by `composer/installers` as a WordPress plugin).
 
 **2. Create the pages.** Feedback → Settings → **Create the feedback pages** (or `wp ruvelo-feedback setup`) creates:
 
